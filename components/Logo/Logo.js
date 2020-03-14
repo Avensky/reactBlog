@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Logo.css'
+import './Logo.css'
 import myLogo from '../../assets/images/myLogo.png';
 
 const logo = (props) => (
