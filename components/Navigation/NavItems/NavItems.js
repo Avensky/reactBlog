@@ -1,9 +1,9 @@
 import React from 'react';
-import classes from './NavItems.module.css';
+import './NavItems.module.css';
 import NavItem from './NavItem/NavItem';
 
 const navItems = () => (
-   <ul className={classes.NavItems}>
+   <ul className='NavItems'>
          <NavItem link="/" active>Home</NavItem>
          <NavItem link="/" >About</NavItem>
          <NavItem link="/" >Projects</NavItem>

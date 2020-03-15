@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Auxiliary from '../../hoc/Auxiliary';
-import classes from './Layout.module.css';
+import './Layout.module.css';
 import Navbar from '../Navigation/Navbar/Navbar';
 import Sidebar from '../Navigation/Sidebar/Sidebar';
 
@@ -24,7 +24,7 @@ class Layout extends Component {
             <Auxiliary>
                 <Navbar barToggleClicked={this.sidebarToogleHandler} />
                 <Sidebar open={this.state.showSidebar} closed={this.sidebarClosedHandler} />
-                <main className={classes.Content}>
+                <main className='Content'>
                     {this.props.children}
                 </main>
             </Auxiliary>

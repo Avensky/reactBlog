@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './SidebarToggle.module.css'
+import './SidebarToggle.module.css'
 
 const sidebarToggle = (props) => (
-    <div onClick={props.clicked} className={classes.SidebarToggle}>
+    <div onClick={props.clicked} className='SidebarToggle'>
         <div></div>
         <div></div>
         <div></div>

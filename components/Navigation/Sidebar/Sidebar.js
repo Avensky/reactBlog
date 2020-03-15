@@ -1,14 +1,14 @@
 import React from 'react';
 import Logo from '../../Logo/Logo';
 import NavItems from '../NavItems/NavItems';
-import classes from './Sidebar.module.css';
+import './Sidebar.module.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Auxiliary from '../../../hoc/Auxiliary';
 
 const sidebar = (props) => {
-    let attachedClasses = [classes.Sidebar, classes.Close];
+    let attachedClasses = ['Sidebar', 'Close'];
     if (props.open) {
-        attachedClasses = [classes.Sidebar, classes.Open];
+        attachedClasses = ['Sidebar', 'Open'];
     }
     return (
         <Auxiliary>
