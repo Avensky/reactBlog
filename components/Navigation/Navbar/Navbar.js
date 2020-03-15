@@ -1,5 +1,5 @@
 import React from 'react';
-import './Navbar.css'
+import classes from './Navbar.module.css'
 import Logo from '../../Logo/Logo';
 import NavItems from '../NavItems/NavItems';
 import SidebarToggle from '../Sidebar/SidebarToggle/SidebarToggle';

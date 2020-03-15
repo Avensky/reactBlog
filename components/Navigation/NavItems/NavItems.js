@@ -1,15 +1,15 @@
 import React from 'react';
-import './NavItems.css';
+import classes from './NavItems.module.css';
 import NavItem from './NavItem/NavItem';
 
 const navItems = () => (
    <ul className={classes.NavItems}>
-         <li><NavItem link="/" active>Home</NavItem></li>
-         <li><NavItem link="/" >About</NavItem></li>
-         <li><NavItem link="/" >Projects</NavItem></li>
-         <li><NavItem link="/" >Blog</NavItem></li>
-         <li><NavItem link="/" >Register</NavItem></li>
-         <li><NavItem link="/" >Login</NavItem></li>
+         <NavItem link="/" active>Home</NavItem>
+         <NavItem link="/" >About</NavItem>
+         <NavItem link="/" >Projects</NavItem>
+         <NavItem link="/" >Blog</NavItem>
+         <NavItem link="/" >Register</NavItem>
+         <NavItem link="/" >Login</NavItem>
    </ul>
 )
 

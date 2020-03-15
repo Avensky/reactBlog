@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../Logo/Logo';
 import NavItems from '../NavItems/NavItems';
-import './Sidebar.css';
+import classes from './Sidebar.module.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Auxiliary from '../../../hoc/Auxiliary';
 
