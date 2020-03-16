@@ -3,6 +3,7 @@ import Auxiliary from '../../hoc/Auxiliary';
 import './Layout.module.css';
 import Navbar from '../Navigation/Navbar/Navbar';
 import Sidebar from '../Navigation/Sidebar/Sidebar';
+import Background from '../UI/Background/Background';
 
 class Layout extends Component {
     state = {
@@ -22,6 +23,7 @@ class Layout extends Component {
     render () {
         return (    
             <Auxiliary>
+                <Background />
                 <Navbar barToggleClicked={this.sidebarToogleHandler} />
                 <Sidebar open={this.state.showSidebar} closed={this.sidebarClosedHandler} />
                 <main className='Content'>
