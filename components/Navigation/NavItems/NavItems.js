@@ -1,37 +1,27 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
 import './NavItems.module.css';
 import NavItem from './NavItem/NavItem';
 
 const navItems = () => (
       <ul className='NavItems'>
-            <NavLink 
-                  to="/posts/" 
-                  exact 
-                  ><NavItem>Blog</NavItem>
-            </NavLink>
-            <NavLink 
-                  to={{
-                        pathname: "/new-post", 
-                        hash: '#submit', 
-                        search: '?quick-submit=true' 
-                  }}><NavItem>New Post</NavItem>
-            </NavLink>
-            <NavLink 
-                  to="/" 
-                  exact 
-                  ><NavItem>About</NavItem>
-            </NavLink>
-            <NavLink 
-                  to="/posts/" 
-                  exact 
-                  ><NavItem>Register</NavItem>
-            </NavLink>
-            <NavLink 
-                  to="/posts/" 
-                  exact 
-                  ><NavItem>Login</NavItem>
-            </NavLink>
+            <li className='NavItem'>
+                  <NavItem link='/'>Home</NavItem>
+            </li>
+            <li className='NavItem'>
+                  <NavItem link='/posts'>Blog</NavItem>
+            </li>
+            <li className='NavItem'>
+                  <NavItem link='/new-post'>New Post</NavItem>
+            </li>
+            <li className='NavItem'>
+                  <NavItem link='/projects'>Projects</NavItem>
+            </li>
+            <li className='NavItem'>
+                  <NavItem link='/about'>About</NavItem>
+            </li>
+            <li className='NavItem'>
+                  <NavItem link='/login'>Login</NavItem>
+            </li>
       </ul>
 )
 
