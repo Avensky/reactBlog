@@ -19,6 +19,7 @@
     color: #40A4C8;
 }
 
+/* responsive setting*/
 @media (min-width: 500px) {
     .NavItem {
         margin: 0;
@@ -29,7 +30,8 @@
     }
     
     .NavItem a {
-        color: white;
+        font-size: 1.25em;
+        color: #0093B9;
         height: 100%;
         padding: 16px 10px;
         border-bottom: 4px solid transparent;
@@ -38,9 +40,8 @@
     .NavItem a:hover,
     .NavItem a:active,
     .NavItem a.active {
-        background-color: #8F5C2C;
-        border-bottom: 4px solid #40A4C8;
-        color: white;
+        border-bottom: 4px solid purple;
+        color: purple;
     }
 
 }
