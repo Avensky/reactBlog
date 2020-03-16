@@ -26,7 +26,7 @@ class Layout extends Component {
                 <Background />
                 <Navbar barToggleClicked={this.sidebarToogleHandler} />
                 <Sidebar open={this.state.showSidebar} closed={this.sidebarClosedHandler} />
-                <main className='Content'>
+                <main className='Wrapper'>
                     {this.props.children}
                 </main>
             </Auxiliary>

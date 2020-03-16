@@ -1,0 +1,18 @@
+.videoWrapper h1{
+	font-size:9em;
+	color: #FFC276;
+	line-height:180px;
+	display: inline-block;
+}
+.videoWrapper h2{
+	font-size: 6em;
+ 	color: #0093B9;
+	display: inline-block;
+	text-shadow: -5px 1px 0px rgba(255,194,118,0.9);
+}
+
+.highlight {
+	color: #fff;
+	color: rgba(255,255,255, 0.9);
+	text-shadow: -5px 1px 11px #B914C7;
+}

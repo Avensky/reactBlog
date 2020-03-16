@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 
-import Blog from './containers/Blog/Blog';
+//import Blog from './containers/Blog/Blog';
+import Content from './containers/Content';
 import Layout from './components/Layout/Layout';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
     return (
       <BrowserRouter>
           <Layout>
-            <Blog />  
+            <Content />  
           </Layout>    
       </BrowserRouter>
     );
