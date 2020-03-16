@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Auxiliary from '../../hoc/Auxiliary';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom'
 import './Blog.css';
 import Posts from './Posts/Posts';
 //import NewPost from './NewPost/NewPost';
 //import FullPost from './FullPost/FullPost';
 import asyncComponent from '../../hoc/asyncComponent';
+import Auxiliary from '../../hoc/Auxiliary';
 
 const AsyncNewPost = asyncComponent(() => {
     return import('./NewPost/NewPost');
