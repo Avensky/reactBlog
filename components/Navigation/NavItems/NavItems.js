@@ -8,13 +8,13 @@ const navItems = () => (
                   <NavItem link='/home'>Home</NavItem>
             </li>
             <li className='NavItem'>
-                  <NavItem link='/posts'>Blog</NavItem>
+                  <NavItem link='/blog'>Blog</NavItem>
             </li>
             <li className='NavItem'>
                   <NavItem link='/new-post'>New Post</NavItem>
             </li>
             <li className='NavItem'>
-                  <NavItem link='/projects'>Projects</NavItem>
+                  <NavItem link='/posts'>Posts</NavItem>
             </li>
             <li className='NavItem'>
                   <NavItem link='/about'>About</NavItem>

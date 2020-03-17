@@ -1,0 +1,12 @@
+.Container {
+    min-height: 90vh;
+    margin: 0 10%;
+    padding: 10vh 0 0;
+    display: grid;
+    grid-template-rows: 12vh min-content;
+    grid-gap: 1em;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "content"
+}
