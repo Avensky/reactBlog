@@ -1,8 +1,6 @@
 .Header {
 	align-items: center;
-	margin-bottom:2%;
 	white-space: nowrap;
-	height:100%;
 	grid-area: header;
 }
 .HeaderRight{

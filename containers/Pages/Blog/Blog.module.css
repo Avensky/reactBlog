@@ -2,13 +2,6 @@
     grid-area: content;
 }
 
-.Layout {
-    grid-template-columns: 60vw 20vw;
-    grid-template-areas:
-        "header header"
-        "content archives";
-}
-
 .Blog ul {
     list-style: none;
     margin:0;

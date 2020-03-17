@@ -4,6 +4,7 @@
     padding: 10vh 0 0;
     display: grid;
     grid-gap: 1em;
+    grid-template-rows: 12vh min-content;
 }
 
 .blog {
