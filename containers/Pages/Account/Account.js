@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from '../../Layout/Layout';
 import Header from '../../Layout/Header/Header';
-import './Login.module.css';
+import './Account.module.css';
 
-const login = () => {
+const account = () => {
     return(
     <Layout grid="new">
         <Header />
     </Layout>
     )
 }
-export default login;
+export default account;

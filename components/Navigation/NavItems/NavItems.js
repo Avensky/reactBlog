@@ -4,24 +4,12 @@ import NavItem from './NavItem/NavItem';
 
 const navItems = () => (
       <ul className='NavItems'>
-            <li className='NavItem'>
-                  <NavItem link='/home'>Home</NavItem>
-            </li>
-            <li className='NavItem'>
-                  <NavItem link='/blog'>Blog</NavItem>
-            </li>
-            <li className='NavItem'>
-                  <NavItem link='/new-post'>New Post</NavItem>
-            </li>
-            <li className='NavItem'>
-                  <NavItem link='/posts'>Posts</NavItem>
-            </li>
-            <li className='NavItem'>
-                  <NavItem link='/about'>About</NavItem>
-            </li>
-            <li className='NavItem'>
-                  <NavItem link='/login'>Login</NavItem>
-            </li>
+            <li className='NavItem'><NavItem link='/home'>Home</NavItem></li>
+            <li className='NavItem'><NavItem link='/about'>About</NavItem></li>
+            <li className='NavItem'><NavItem link='/blog'>Blog</NavItem></li>
+            <li className='NavItem'><NavItem link='/new-post'>New Post</NavItem></li>
+            <li className='NavItem'><NavItem link='/account'>Account</NavItem></li>
+            <li className='NavItem'><NavItem link='/login'>Login</NavItem></li>
       </ul>
 )
 

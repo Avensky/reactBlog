@@ -9,7 +9,7 @@ const header = () => {
             </div>
             <div className="HeaderRight">
                 <div className="HeaderItem ">
-                <a className="CardNewPost" href="#">+</a>
+                <a className="CardNewPost">+</a>
                 <p className="CardNewPostTitle">Add a new post</p>
             </div>
         </div>

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect, } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import './Content.module.css';
 import Blog from './Pages/Blog/Blog';
 import Posts from './Pages/Blog/Posts/Posts';
 import Home from './Pages/Home/Home';
-import Projects from './Pages/Projects/Projects';
+import Projects from './Pages/Account/Account';
 import About from './Pages/About/About';
 import Login from './Pages/Login/Login';
+import Account from './Pages/Account/Account';
 import asyncComponent from '../hoc/asyncComponent';
 import Auxiliary from '../hoc/Auxiliary';
 
@@ -29,10 +30,12 @@ class Content extends Component {
                     <Route path="/home" exact component={Home} />
                     <Route path="/posts" exact component={Posts} />
                     <Route from="/" exact component={Home} />
-                    {/* 
-                    <Route path="/projects" component={Projects} />
                     <Route path="/about" component={About} />
+                    <Route path="/account" component={Account} />
+                    <Route path="/projects" component={Projects} />
                     <Route path="/login" component={Login} />
+                    {/* 
+                    <Route path="/projects" component={Projects} /
                     <Route render={() => <h1>Not found</h1>} />
                     */}
                     
