@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Auxiliary from '../../hoc/Auxiliary';
-import './Layout.module.css';
+import './Wrapper.module.css';
 import Navbar from '../Navigation/Navbar/Navbar';
 import Sidebar from '../Navigation/Sidebar/Sidebar';
 import Background from '../UI/Background/Background';
 
-class Layout extends Component {
+class Wrapper extends Component {
     state = {
         showSidebar: false
     }
@@ -26,7 +26,7 @@ class Layout extends Component {
                 <Background />
                 <Navbar barToggleClicked={this.sidebarToogleHandler} />
                 <Sidebar open={this.state.showSidebar} closed={this.sidebarClosedHandler} />
-                <main className='Layout'>
+                <main className='Wrapper'>
                     {this.props.children}
                 </main>
             </Auxiliary>
@@ -34,4 +34,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default Wrapper;

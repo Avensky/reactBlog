@@ -3,15 +3,15 @@ import { BrowserRouter } from 'react-router-dom'
 
 //import Blog from './containers/Blog/Blog';
 import Content from './containers/Content';
-import Layout from './components/Layout/Layout';
+import Wrapper from './components/Wrapper/Wrapper';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <Layout>
-            <Content />  
-          </Layout>    
+          <Wrapper>
+            <Content />
+          </Wrapper>
       </BrowserRouter>
     );
   }

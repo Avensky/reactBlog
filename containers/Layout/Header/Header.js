@@ -1,6 +1,5 @@
 import React from 'react';
 import './Header.module.css';
-import Auxiliary from '../../hoc/Auxiliary';
 
 const header = () => {
     return (

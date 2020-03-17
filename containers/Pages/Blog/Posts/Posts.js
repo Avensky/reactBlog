@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
-import axios from '../../axios';
-import './Blog.module.css';
-import Header from '../Header/Header';
-import Archives from '../Archives/Archives';
-import Posts from './Posts/Posts';
-import Post from './Posts/Post/Post';
+import React, {Component } from 'react';
+import axios from '../../../../axios';
+import Post from './Post/Post';
+import './Posts.css';
 import {Route} from 'react-router-dom';
-import Container from '../Container/Container';
-import FullPost from './FullPost/FullPost';
-//import NewPost from './NewPost/NewPost';
-//import FullPost from './FullPost/FullPost';
-import Auxiliary from '../../hoc/Auxiliary';
+import FullPost from '../FullPost/FullPost';
 
-class Blog extends Component {
+class Posts extends Component {
     state = {
         posts: []
     }
@@ -47,28 +40,27 @@ class Blog extends Component {
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
                 return (
-                    <Post
-                    key={post.id} 
-                    title={post.title} 
-                    author={post.author}
-                    clicked={() => this.postClickedHandler(post.id)}
-                />
+                        <Post
+                            key={post.id} 
+                            title={post.title} 
+                            author={post.author}
+                            clicked={() => this.postClickedHandler(post.id)}
+                        />
                 )
             })
 
         }
-
         return (
-            <Container>
-                <Header />
+            <div>
+
                 <section className="Posts">
                     {posts}
                 </section>
-                <Route path={this.props.match.url + '/:id'} component={FullPost} />
-                <Archives />
-            </Container>
+                <Route path={this.props.match.url + '/:id'} exact component={FullPost} />
+            </div>
+
         )
     }
-}
 
-export default Blog;
+}
+export default Posts;

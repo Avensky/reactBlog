@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.module.css';
-import Auxiliary from '../../hoc/Auxiliary';
+import Auxiliary from '../../../hoc/Auxiliary';
 
 const home = () => {
     return (
