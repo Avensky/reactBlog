@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, } from 'react-router-dom'
+import { Route, Switch, Redirect, } from 'react-router-dom'
 import './Content.module.css';
 import Blog from './Pages/Blog/Blog';
 import Posts from './Pages/Blog/Posts/Posts';
@@ -11,7 +11,7 @@ import asyncComponent from '../hoc/asyncComponent';
 import Auxiliary from '../hoc/Auxiliary';
 
 const AsyncNewPost = asyncComponent(() => {
-    return import('./Pages/Blog/NewPost/NewPost');
+    return import('./Pages/NewPost/NewPost');
 });
 
 class Content extends Component {
@@ -25,10 +25,10 @@ class Content extends Component {
                 <Route path="/" render={()=> <h1>Home 2</h1>} /> */}
                 <Switch>
                     { this.state.auth ? <Route path="/new-post" component={AsyncNewPost} /> : null} 
-                    <Route path="/home" component={Home} />
                     <Route path="/blog" component={Blog} />
-                    <Route path="/posts" component={Posts} />
-                    <Route path="/" exact component={Home} />
+                    <Route path="/home" exact component={Home} />
+                    <Route path="/posts" exact component={Posts} />
+                    <Route from="/" exact component={Home} />
                     {/* 
                     <Route path="/projects" component={Projects} />
                     <Route path="/about" component={About} />

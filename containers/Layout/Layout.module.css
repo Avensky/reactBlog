@@ -5,3 +5,17 @@
     display: grid;
     grid-gap: 1em;
 }
+
+.blog {
+    grid-template-columns: 60vw 20vw;
+	grid-template-areas:
+		"header header"
+		"content archives"
+}
+
+.new {
+    grid-template-columns: 1fr;
+	grid-template-areas:
+		"header"
+		"content"
+}

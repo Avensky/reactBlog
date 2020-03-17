@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-
+import Layout from '../../Layout/Layout';
+import Header from '../../Layout/Header/Header';
 import './NewPost.css';
 import axios from 'axios';
 
@@ -37,7 +38,9 @@ class NewPost extends Component {
             redirect = <Redirect to="/posts" />
         }
         return (
-            <div className="NewPost">
+            <Layout grid="new">
+                <Header />
+                <div className="NewPost">
                 {redirect}
                 <h1>Add a Post</h1>
                 <label>Title</label>
@@ -51,6 +54,9 @@ class NewPost extends Component {
                 </select>
                 <button onClick={this.postDataHandler}>Add Post</button>
             </div>
+
+            </Layout>
+            
         );
     }
 }

@@ -3,14 +3,9 @@ import axios from '../../../axios';
 import './Blog.module.css';
 import Header from '../../Layout/Header/Header';
 import Archives from '../../Archives/Archives';
-import Posts from './Posts/Posts';
 import Post from './Posts/Post/Post';
 import {Route} from 'react-router-dom';
-import Container from '../../Layout/Layout';
 import FullPost from './FullPost/FullPost';
-//import NewPost from './NewPost/NewPost';
-//import FullPost from './FullPost/FullPost';
-import Auxiliary from '../../../hoc/Auxiliary';
 import Layout from '../../Layout/Layout';
 
 class Blog extends Component {
@@ -56,20 +51,17 @@ class Blog extends Component {
                 />
                 )
             })
-
         }
 
         return (
-            <Auxiliary>
-                <Layout>
-                    <Header />
-                    <section className="Blog">
-                        {posts}
-                    </section>
-                    <Route path={this.props.match.url + '/:id'} component={FullPost} />
-                    <Archives />
-                </Layout>
-            </Auxiliary>
+            <Layout grid="blog">
+                <Header />
+                <section className="Blog">
+                    {posts}
+                </section>
+                <Route path={this.props.match.url + '/:id'} component={FullPost} />
+                <Archives />
+            </Layout>
         )
     }
 }
