@@ -42,23 +42,25 @@ class Posts extends Component {
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
                 return (
-                    <Post
-                    key={post.id} 
-                    title={post.title} 
-                    author={post.author}
-                    clicked={() => this.postClickedHandler(post.id)}
-                />
+                        <Post
+                            key={post.id} 
+                            title={post.title} 
+                            author={post.author}
+                            clicked={() => this.postClickedHandler(post.id)}
+                        />
                 )
             })
 
         }
         return (
             <div>
+
                 <section className="Posts">
                     {posts}
                 </section>
-                <Route path={this.props.match.url + '/:id'} component={FullPost} />
+                <Route path={this.props.match.url + '/:id'} exact component={FullPost} />
             </div>
+
         )
     }
 

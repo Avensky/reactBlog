@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../axios';
 import './Blog.module.css';
 import Header from '../Header/Header';
+import Archives from '../Archives/Archives';
 import Posts from './Posts/Posts';
 import Post from './Posts/Post/Post';
 import {Route} from 'react-router-dom';
@@ -60,12 +61,11 @@ class Blog extends Component {
         return (
             <Container>
                 <Header />
-                <div>
-                    <section className="Posts">
-                        {posts}
-                    </section>
-                    <Route path={this.props.match.url + '/:id'} component={FullPost} />
-                </div>
+                <section className="Posts">
+                    {posts}
+                </section>
+                <Route path={this.props.match.url + '/:id'} component={FullPost} />
+                <Archives />
             </Container>
         )
     }
