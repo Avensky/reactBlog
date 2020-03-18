@@ -3,6 +3,7 @@ import Layout from '../../Layout/Layout';
 import Header from '../../Layout/Header/Header';
 import './Login.module.css';
 
+
 const login = () => {
     return(
     <Layout grid="new">
@@ -13,8 +14,6 @@ const login = () => {
                 <input type="text" value="Enter Email" />
                 <label>Password:</label>
                 <input type="text" value="Enter Password" />
-                <label>Confirm Password:</label>
-                <input type="text" value="Confirm Password" />
                 <input type="checkbox" className="float" /> <p className="float">Rembember Me</p>
                 <button className="btn" onClick={this.postDataHandler}>Add Post</button>
                 <p><a href="#">Forgot Password</a>.</p>
