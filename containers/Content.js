@@ -8,6 +8,7 @@ import Projects from './Pages/Account/Account';
 import About from './Pages/About/About';
 import Login from './Pages/Login/Login';
 import Account from './Pages/Account/Account';
+import Register from '../containers/Pages/Register/Register';
 import asyncComponent from '../hoc/asyncComponent';
 import Auxiliary from '../hoc/Auxiliary';
 
@@ -34,6 +35,7 @@ class Content extends Component {
                     <Route path="/account" component={Account} />
                     <Route path="/projects" component={Projects} />
                     <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
                     {/* 
                     <Route path="/projects" component={Projects} /
                     <Route render={() => <h1>Not found</h1>} />

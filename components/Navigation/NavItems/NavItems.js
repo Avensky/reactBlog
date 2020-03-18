@@ -9,6 +9,7 @@ const navItems = () => (
             <li className='NavItem'><NavItem link='/blog'>Blog</NavItem></li>
             <li className='NavItem'><NavItem link='/new-post'>New Post</NavItem></li>
             <li className='NavItem'><NavItem link='/account'>Account</NavItem></li>
+            <li className='NavItem'><NavItem link='/register'>Register</NavItem></li>
             <li className='NavItem'><NavItem link='/login'>Login</NavItem></li>
       </ul>
 )
