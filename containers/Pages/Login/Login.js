@@ -9,16 +9,16 @@ const login = () => {
     <Layout grid="new">
         <Header />
         <div className="Login">
-                <h1>Log in!</h1>
+                <legend>Log in!</legend>
                 <label>Email:</label>
                 <input type="text" value="Enter Email" />
                 <label>Password:</label>
                 <input type="text" value="Enter Password" />
-                <input type="checkbox" className="float" /> <p className="float">Rembember Me</p>
+                <input type="checkbox"/> <p className="inline">Rembember Me</p>
                 <button className="btn" onClick={this.postDataHandler}>Add Post</button>
-                <p><a href="#">Forgot Password</a>.</p>
+                <p><a href="#">Forgot Password?</a></p>
                 <div class="border-top pt-3"  />
-                <small className="text-muted">Need An Account? <a className="ml-2" href="#">Sign Up Now</a></small>
+                <p className="text-muted">Need An Account? <a href="#">Sign Up Now</a></p>
                 <div class="border-top pt-3"  />
             </div>
     </Layout>
