@@ -2,13 +2,14 @@ import React from 'react';
 import Layout from '../../Layout/Layout';
 import Header from '../../Layout/Header/Header';
 import './Login.module.css';
+import '../Pages.module.css';
 
 
 const login = () => {
     return(
     <Layout grid="new">
         <Header />
-        <div className="Login">
+        <div className="Pages">
                 <legend>Log in!</legend>
                 <label>Email:</label>
                 <input type="text" value="Enter Email" />

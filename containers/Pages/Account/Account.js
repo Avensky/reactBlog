@@ -3,12 +3,13 @@ import Layout from '../../Layout/Layout';
 import Header from '../../Layout/Header/Header';
 import './Account.module.css';
 import user from '../../../assets/images/user.jpg';
+import '../Pages.module.css';
 
 const account = () => {
     return(
     <Layout grid="new">
         <Header />
-        <div className="Login">
+        <div className="Pages">
             <img src={user} />
             <img src=""></img>
             <h1>By Avensky</h1>

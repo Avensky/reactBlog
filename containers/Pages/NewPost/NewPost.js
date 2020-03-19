@@ -4,6 +4,7 @@ import Layout from '../../Layout/Layout';
 import Header from '../../Layout/Header/Header';
 import './NewPost.css';
 import axios from 'axios';
+import '../Pages.module.css';
 
 class NewPost extends Component {
     state = {
@@ -40,7 +41,7 @@ class NewPost extends Component {
         return (
             <Layout grid="new">
                 <Header />
-                <div className="NewPost">
+                <div className="Pages">
                 {redirect}
                 <h1>Add a Post</h1>
                 <label>Title</label>

@@ -2,12 +2,13 @@ import React from 'react';
 import Layout from '../../Layout/Layout';
 import Header from '../../Layout/Header/Header';
 import './Register.module.css';
+import '../Pages.module.css';
 
 const register = () => {
     return(
         <Layout grid="new">
             <Header />
-            <div className="Register">
+            <div className="Pages">
                 <h1>Register Today!</h1>
                 <p>Please fill in this form to create an account.</p>
                 <label>Usermame:</label>
