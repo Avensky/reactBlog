@@ -24,7 +24,7 @@ class Wrapper extends Component {
         return (    
             <Auxiliary>
                 <Background />
-                <Navbar barToggleClicked={this.sidebarToogleHandler} />
+                <Navbar sidebarToggleClicked={this.sidebarToogleHandler} />
                 <Sidebar open={this.state.showSidebar} closed={this.sidebarClosedHandler} />
                 <main className='Wrapper'>
                     {this.props.children}

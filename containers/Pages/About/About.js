@@ -5,8 +5,7 @@ import './About.module.css';
 
 const about = () => {
     return(
-    <Layout grid="new">
-        <Header />
+    <Layout grid="one">
     </Layout>
     )
 }

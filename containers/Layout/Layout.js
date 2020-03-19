@@ -14,6 +14,10 @@ class Layout extends Component {
             assignedClasses.push('new')
         }
 
+        if (this.props.grid === 'one'){
+            assignedClasses.push('one')
+        }
+
         return (    
             <div className={assignedClasses.join(' ')}>{this.props.children}</div>
         )

@@ -13,11 +13,14 @@
 .SidebarToggle div {
     width: 90%;
     height: 3px;
-    background-color: white;
+    background-color:#0093B9;
 }
 
 @media (min-width: 500px) {
     .SidebarToggle {
-        display: none;
+        display:none;
+    }
+    .Navbar {
+        justify-content: center;
     }
 }

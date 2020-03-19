@@ -7,7 +7,6 @@ import SidebarToggle from '../Sidebar/SidebarToggle/SidebarToggle';
 const navbar = (props) => (
     <header className='Navbar'>
         <SidebarToggle clicked={props.sidebarToggleClicked}/>
-        <Logo height="95%" />
         <nav className='DesktopOnly'>
             <NavItems />
         </nav>
