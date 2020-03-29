@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../Layout/Layout';
-import Header from '../../Layout/Header/Header';
+//import Header from '../../Layout/Header/Header';
 import './Register.module.css';
 import classes from '../Pages.module.css';
 
@@ -18,9 +18,9 @@ const register = () => {
                 <input type="text" defaultValue="Enter Password" />
                 <label>Confirm Password:</label>
                 <input type="text" defaultValue="Confirm Password" />
-                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <p>By creating an account you agree to our <a href="...">Terms & Privacy</a>.</p>
                 <button className={classes.btn}>Add Post</button>
-                <small className={classes.textMuted}><p>Already Have An Account? <a href="">Sign In</a></p></small>
+                <small className={classes.textMuted}><p>Already Have An Account? <a href="...">Sign In</a></p></small>
             </form>
         </Layout>
     )

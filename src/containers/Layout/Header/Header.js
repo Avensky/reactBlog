@@ -9,7 +9,7 @@ const header = () => {
             </div>
             <div className={classes.HeaderRight}>
                 <div className={classes.HeaderItem}>
-                    <a className={classes.CardNewPost}>+</a>
+                    <a href="...">+</a>
                 <p className={classes.CardNewPostTitle}>Add a new post</p>
             </div>
         </div>

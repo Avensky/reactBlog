@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../../Layout/Layout';
 import classes from '../Pages.module.css';
-import { checkValidity } from '../../../utility/utility'
+//import { checkValidity } from '../../../utility/utility'
 import {connect} from 'react-redux'
 import * as actions from '../../../store/actions/index';
 
@@ -66,7 +66,7 @@ class Login extends Component {
                     />
                     <input type="checkbox"/> <p className={classes.inline}>Rembember Me</p>
                     <button className={classes.btn}>Login</button>
-                    <p><a href="#">Forgot Password?</a></p>
+                    <p><a href="null">Forgot Password?</a></p>
                     <div className={classes.borderTop + classes.pt3}  />
 
                     <button 

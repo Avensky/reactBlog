@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../Layout/Layout';
-import Header from '../../Layout/Header/Header';
+//import Header from '../../Layout/Header/Header';
 import myClasses from './Account.module.css';
 import user from '../../../assets/images/user.jpg';
 import classes from '../Pages.module.css';
@@ -10,7 +10,7 @@ const account = () => {
     return(
     <Layout grid="one">
         <div className={attachedClasses.join(' ')}>
-            <img src={user} />
+            <img src={user} alt="user"/>
             <h1>By Avensky</h1>
             <small>urielzacarias@gmail.com</small>
             <h2>Update account details</h2>
