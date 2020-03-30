@@ -106,6 +106,7 @@ class Login extends Component {
         }
         return(
             <Layout grid="one">
+                {loginRedirect}
                 {errorMessage}
                 {form}
                 <button 

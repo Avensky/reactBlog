@@ -14,7 +14,7 @@ class Wrapper extends Component {
         this.setState({showSidebar: false})
     }
 // best practice to set state in a clean way when it depends on a previous state
-    sidebarToogleHandler = () => {
+    sidebarToggleHandler = () => {
         this.setState(( prevState ) => {
             return {showSidebar: !prevState.showSidebar};
         });
@@ -24,7 +24,7 @@ class Wrapper extends Component {
         return (    
             <Auxiliary>
                 <Background />
-                <Navbar sidebarToggleClicked={this.sidebarToogleHandler} />
+                <Navbar sidebarToggleClicked={this.sidebarToggleHandler} />
                 <Sidebar open={this.state.showSidebar} closed={this.sidebarClosedHandler} />
                 <main className={classes.Wrapper}>
                     {this.props.children}
