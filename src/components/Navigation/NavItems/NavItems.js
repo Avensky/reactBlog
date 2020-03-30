@@ -10,7 +10,7 @@ const navItems = () => (
             <NavItem link='/new-post'>New Post</NavItem>
             <NavItem link='/account'>Account</NavItem>
             <NavItem link='/register'>Register</NavItem>
-            <NavItem link="/logout">Logout</NavItem>}
+            <NavItem link="/logout">Logout</NavItem>
             <NavItem link='/login'>Login</NavItem>
       </ul>
 )

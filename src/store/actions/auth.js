@@ -65,8 +65,25 @@ export const login = (email, password, isSignup) => {
             })
             .catch(err => {
                 console.log(err);
-                dispatch(loginFail(err));
+                dispatch(loginFail(err.response.data.error));
             });
     }
 }
 
+export const loginCheckState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logout());
+        } else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            if (expirationDate <= new Date()){
+                dispatch(logout());
+            } else {
+                const userId = localStorage.getItem('userId');
+                dispatch(loginSuccess(token, userId));
+                dispatch(checkLoginTimeout((expirationDate.getTime() -new Date().getTime()) / 1000 ))
+            }
+        }
+    }
+}

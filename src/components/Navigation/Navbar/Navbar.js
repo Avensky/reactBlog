@@ -9,7 +9,7 @@ const navbar = (props) => (
         <SidebarToggle 
         clicked={props.sidebarToggleClicked}/>
         <nav className={classes.Navbar}>
-            <NavItems />
+            <NavItems isLoggedIn={props.isLogged}/>
         </nav>
     </header>
 );
