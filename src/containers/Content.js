@@ -44,6 +44,7 @@ class Content extends Component {
                     {/*<Redirect from="/" to="/posts" />*/}                
                 </Switch>
             </Auxiliary>
+            
         );
     }
 }

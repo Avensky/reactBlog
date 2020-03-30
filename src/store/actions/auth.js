@@ -7,9 +7,11 @@ export const loginStart = () => {
     }
 }
 
-export const loginSuccess = () => {
+export const loginSuccess = (token, userId) => {
     return {
-        type: actionTypes.LOGIN_SUCCESS
+        type: actionTypes.LOGIN_SUCCESS, 
+        idToken: token,
+        userId: userId
     }
 }
 
@@ -21,6 +23,9 @@ export const loginFail = (error) => {
 }
 
 export const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationDate');
+    localStorage.removeItem('userId');
     return {
         type: actionTypes.LOGOUT
     }
@@ -29,23 +34,27 @@ export const logout = () => {
 export const login = (email, password, isSignup) => {
     return dispatch => {
         dispatch(loginStart());
-        const loginData = {
+        const authData = {
             email: email,
             password: password,
             returnSecureToken: true
         }
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDo0MjXkcVqlbWrXY-wqPS245aKcXi2smw'
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDo0MjXkcVqlbWrXY-wqPS245aKcXi2smw'
+//        let url= 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDo0MjXkcVqlbWrXY-wqPS245aKcXi2smw'     
         if (!isSignup) {
-            url= 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDo0MjXkcVqlbWrXY-wqPS245aKcXi2smw'
+            url= 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDo0MjXkcVqlbWrXY-wqPS245aKcXi2smw'
+//            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDo0MjXkcVqlbWrXY-wqPS245aKcXi2smw'
+        
         }
-        axios.post(url, loginData).then(response => {
-            console.log(response);
-            dispatch(loginSuccess())
-        })
-        .catch(err => {
-            console.log(err)
-            dispatch(loginFail(err.response.data.error))
-        })
+        axios.post(url, authData)
+            .then(response => {
+                console.log(response);
+                dispatch(loginSuccess(response.data.idToken, response.data.localId));
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch(loginFail(err));
+            });
     }
 }
 

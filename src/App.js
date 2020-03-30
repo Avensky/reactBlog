@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { withRouter, BrowserRouter } from 'react-router-dom'
 
 //import Blog from './containers/Blog/Blog';
 import Content from './containers/Content';
@@ -17,4 +17,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

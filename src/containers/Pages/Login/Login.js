@@ -4,6 +4,7 @@ import classes from '../Pages.module.css';
 //import { checkValidity } from '../../../utility/utility'
 import {connect} from 'react-redux'
 import * as actions from '../../../store/actions/index';
+//import { updateObject } from '../../../utility/utility'
 
 class Login extends Component {
     state = {
@@ -13,22 +14,21 @@ class Login extends Component {
                 validation: {
                     required: true,
                     isEmail: true
-                }
+                },
+                valid: false,
+                touched: false
             },
             password: {
                 value: '',
                 validation: {
                     required: true,
                     minLength: 6
-                }
+                },
+                valid: false,
+                touched: false
             }
         },
         isSignup: true
-    }
-
-    loginHandler = ( event ) => {
-        event.preventDefault();
-        this.props.onLogin( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup );
     }
 
     switchModeHandler = () => {
@@ -40,45 +40,82 @@ class Login extends Component {
     inputChangeHandler = ( event ) => {
         console.log(event.target.value);
     }
+
+
+    inputChangedHandler = ( event, controlName ) => {
+        const updatedControls = {
+            ...this.state.controls,
+            [controlName]: {
+                ...this.state.controls[controlName],
+                value: event.target.value,
+//                valid: this.checkValidity( event.target.value, this.state.controls[controlName].validation ),
+                touched: true
+            }
+        };
+        this.setState( { controls: updatedControls } );
+    }
+
+    
+    loginHandler = ( event ) => {
+        event.preventDefault();
+        this.props.onLogin( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup );
+    }
+
     render () {
-        return(
-            <Layout grid="one">
-                <form className={classes.Pages} method="post" onSubmit={this.loginHandler}>
-                    <legend>Log in!</legend>
-                    <label>Email:</label>
-                    <input 
-                        type="email"
-                        name="email"
-                        id="email"
-                        onChange={this.inputChangeHandler}
-                        value={this.state.email}
-                        placeholder="Enter Email"
-                    />
+        let form = (
+            <form className={classes.Pages} onSubmit={this.loginHandler}>
+                <legend>Log in!</legend>
+                <label>Email:</label>
+                <input 
+                    type="email"
+                    name="email"
+                    //id="email"
+//                    onChange={this.inputChangedHandler}
+                    onChange={(event) => this.inputChangedHandler( event, "email")}
+
+                    //value={this.state.value}
+                    placeholder="Enter Email"
+                />
 
                     <label>Password:</label>
                     <input 
                         type="password"
                         name="password"
-                        id="password"
-                        onChange={this.inputChangeHandler}
-                        value={this.state.password}
+                        //id="password"
+                        onChange={(event) => this.inputChangedHandler( event, "password")}
+                        //value={this.state.value}
                         placeholder="Enter Password"
                     />
                     <input type="checkbox"/> <p className={classes.inline}>Rembember Me</p>
-                    <button className={classes.btn}>Login</button>
+                    <button className={classes.btn}>{this.state.isSignup ? 'Login' : 'Register'}</button>
                     <p><a href="null">Forgot Password?</a></p>
                     <div className={classes.borderTop + classes.pt3}  />
-
-                    <button 
-                        onClick={this.switchModeHandler}>SWITCH TO {this.state.isSignup ? 'LOGIN' : 'SIGN UP'}
-                    </button>
-
                     <div className={classes.borderTop + classes.pt3}  />
-                </form> 
+                </form>
+        )
+        let errorMessage = null;
+        if (this.props.error) {
+            errorMessage = (
+                <p>{this.props.error.message}</p>
+            );
+        }
+        return(
+            <Layout grid="one">
+                {errorMessage}
+                {form}
+                <button 
+                    onClick={this.switchModeHandler}>{this.state.isSignup ? 'Need an account? Sign up!' : 'Ready to log in.'}
+                </button>
             </Layout>
             )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+       error: state.auth.error
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -86,4 +123,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect (null, mapDispatchToProps)(Login);
+export default connect (mapStateToProps, mapDispatchToProps)(Login);
