@@ -30,7 +30,7 @@ const loginFail = (state, action) => {
     });
 };
 
-const Logout = (state, action) => {
+const logout = (state, action) => {
     return updateObject(state, { token: null, userId: null });
 };
 
@@ -40,7 +40,7 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.LOGIN_START: return loginStart(state, action);
         case actionTypes.LOGIN_SUCCESS: return loginSuccess(state, action);
         case actionTypes.LOGIN_FAIL: return loginFail(state, action);
-        case actionTypes.LOGOUT: return Logout(state, action);
+        case actionTypes.LOGOUT: return logout(state, action);
         default:
             return state;
     }

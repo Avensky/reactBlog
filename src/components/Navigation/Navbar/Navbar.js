@@ -6,7 +6,8 @@ import SidebarToggle from '../Sidebar/SidebarToggle/SidebarToggle';
 
 const navbar = (props) => (
     <header>
-        <SidebarToggle clicked={props.sidebarToggleClicked}/>
+        <SidebarToggle 
+        clicked={props.sidebarToggleClicked}/>
         <nav className={classes.Navbar}>
             <NavItems />
         </nav>
