@@ -21,22 +21,24 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
+        <Route path="/" exact component={Home} />
         <Route path="/blog" component={Blog} />
-        <Route path="/home" exact component={Home} />
         <Route path="/posts" exact component={Posts} />
         <Route path="/about" component={About} />
         <Route path="/projects" component={Projects} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/" exact component={Home} />
-        <Redirect to="/" />                
+        <Redirect to="/" />              
       </Switch>
     );
+
     if (this.props.isLoggedIn) {
       routes = (
         <Switch>
           <Route path="/account" component={Account} />
           <Route path="/logout" component={Logout} />
+          <Redirect to="/" />    
         </Switch>
       )
     }

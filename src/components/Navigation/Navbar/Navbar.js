@@ -6,8 +6,7 @@ import SidebarToggle from '../Sidebar/SidebarToggle/SidebarToggle';
 
 const navbar = (props) => (
     <nav>
-        <SidebarToggle 
-        clicked={props.sidebarToggleClicked}/>
+        <SidebarToggle clicked={props.sidebarToggleClicked}/>
         <div className={classes.Navbar}>
             <NavItems isLoggedIn={props.isLogged}/>
         </div>
