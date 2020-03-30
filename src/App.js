@@ -8,7 +8,7 @@ import About from './containers/Pages/About/About';
 import Login from './containers/Pages/Login/Login';
 import Account from './containers/Pages/Account/Account';
 import Register from './containers/Pages/Register/Register';
-import asyncComponent from './hoc/asyncComponent';
+//import asyncComponent from './hoc/asyncComponent';
 import Wrapper from './components/Wrapper/Wrapper';
 
 class App extends Component {
