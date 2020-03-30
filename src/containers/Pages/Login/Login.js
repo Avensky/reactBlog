@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../../Layout/Layout';
 import classes from '../Pages.module.css';
+import { Redirect } from 'react-router-dom';
 //import { checkValidity } from '../../../utility/utility'
 import {connect} from 'react-redux'
 import * as actions from '../../../store/actions/index';
@@ -99,6 +100,10 @@ class Login extends Component {
                 <p>{this.props.error.message}</p>
             );
         }
+        let loginRedirect = null;
+        if (this.props.isLoggedIn) {
+            loginRedirect = <Redirect to={this.props.loginRedirectPath}/>
+        }
         return(
             <Layout grid="one">
                 {errorMessage}
@@ -113,13 +118,16 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-       error: state.auth.error
+       error: state.auth.error,
+       isLoggedIn: state.auth.token !== null,
+       loginRedirectPath: state.auth.loginRedirectPath
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: (email, password, isSignup) => dispatch(actions.login(email,password,isSignup))
+        onLogin: (email, password, isSignup) => dispatch(actions.login(email,password,isSignup)),
+        onSetLoginRedirectPath: () => dispatch(actions.setLoginRedirectPath('/'))
     }
 }
 

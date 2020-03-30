@@ -14,6 +14,10 @@ import Register from './containers/Pages/Register/Register';
 import Wrapper from './components/Wrapper/Wrapper';
 import Logout from './containers/Pages/Logout/Logout';
 class App extends Component {
+  componentDidMount () {
+    this.props.autoLogin();
+  }
+
   render() {
     let routes = (
       <Switch>
@@ -54,7 +58,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTryAutoSignup: () => dispatch( actions.loginCheckState() )
+    autoLogin: () => dispatch( actions.loginCheckState() )
   };
 };
 
