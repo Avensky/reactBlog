@@ -63,9 +63,18 @@ class Login extends Component {
     }
 
     render () {
+        
+        let errorMessage = null;
+        if (this.props.error) {
+            errorMessage = (
+                <p>{this.props.error.message}</p>
+            );
+        }
+
         let form = (
             <form className={classes.Pages} onSubmit={this.loginHandler}>
                 <legend>Log in!</legend>
+                {errorMessage}
                 <label>Email:</label>
                 <input 
                     type="email"
@@ -91,29 +100,22 @@ class Login extends Component {
                     <button className={classes.btn}>{this.state.isSignup ? 'Login' : 'Register'}</button>
                     <p><a href="null">Forgot Password?</a></p>
                     <div className={classes.borderTop + classes.pt3}  />
+                    <div 
+                        onClick={this.switchModeHandler}>{this.state.isSignup ? 'Need an account? Sign up!' : 'Ready to log in.'}
+                    </div>
                     <div className={classes.borderTop + classes.pt3}  />
                 </form>
         )
-        let errorMessage = null;
-        if (this.props.error) {
-            errorMessage = (
-                <p>{this.props.error.message}</p>
-            );
-        }
 
         let loginRedirect = null;
         if (this.props.isLoggedIn) {
             loginRedirect = <Redirect to={this.props.loginRedirectPath}/>
         }
-        
+
         return(
             <Layout grid="one">
                 {loginRedirect}
-                {errorMessage}
                 {form}
-                <button 
-                    onClick={this.switchModeHandler}>{this.state.isSignup ? 'Need an account? Sign up!' : 'Ready to log in.'}
-                </button>
             </Layout>
             )
     }
