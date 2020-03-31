@@ -4,3 +4,7 @@ export {
     loginCheckState,
     setLoginRedirectPath
 } from './auth';
+
+export {
+    newPost
+} from './newPost';
