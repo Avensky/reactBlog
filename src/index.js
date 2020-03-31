@@ -23,6 +23,7 @@ const store = createStore(
         applyMiddleware(thunk)
     )
 );
+
 const app = (
     <Provider store={store}>
         <BrowserRouter>

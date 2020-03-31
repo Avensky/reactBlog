@@ -27,7 +27,13 @@ class NewPost extends Component {
             body: this.state.content,
             author: this.state.author
         };
-        axios.post('/posts', postData)
+        let axiosConfig = {
+            headers: {
+//                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*"
+            }
+          };
+        axios.post('/posts.json', postData, axiosConfig)
             .then(response => {
                 console.log(response);
                 //this.props.history.push('/posts');
