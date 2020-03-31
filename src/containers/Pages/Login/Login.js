@@ -100,10 +100,12 @@ class Login extends Component {
                 <p>{this.props.error.message}</p>
             );
         }
+
         let loginRedirect = null;
         if (this.props.isLoggedIn) {
             loginRedirect = <Redirect to={this.props.loginRedirectPath}/>
         }
+        
         return(
             <Layout grid="one">
                 {loginRedirect}
