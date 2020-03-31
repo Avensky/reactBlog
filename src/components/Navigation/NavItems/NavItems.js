@@ -7,7 +7,9 @@ const navItems = (props) => (
             <NavItem link='/home'>Home</NavItem>
             <NavItem link='/about'>About</NavItem>
             <NavItem link='/blog'>Blog</NavItem>
-            <NavItem link='/newPost'>New Post</NavItem>
+            {props.isLoggedIn  
+                  ? <NavItem link='/newPost'>New Post</NavItem> 
+                  : null}
             {props.isLoggedIn 
                   ? <NavItem link='/account'>Account</NavItem>
                   : <NavItem link='/register'>Register</NavItem>}

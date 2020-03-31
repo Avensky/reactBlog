@@ -6,18 +6,37 @@ import './NewPost.css';
 import classes from '../Pages.module.css';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
-
+import axios from '../../../axios';
 class NewPost extends Component {
     state = {
         title: '',
         content: '',
         author: 'Max',
-        submitted: false
+        submitted: false,
+        error: null
     }
 
-    componentDidMount () {
-        // If unauth => this.props.history.replace('/posts')
-        console.log(this.props);
+  //  componentDidMount () {
+  //      // If unauth => this.props.history.replace('/posts')
+  //      console.log(this.props);
+  //  }
+
+    postDataHandler = () => {
+        const postData = {
+            title: this.state.title,
+            body: this.state.content,
+            author: this.state.author
+        };
+        axios.post('/posts', postData)
+            .then(response => {
+                console.log(response);
+                //this.props.history.push('/posts');
+                //this.setState( { submitted: true } )
+        })
+        .catch(error => {
+            console.log(error);
+            this.setState({error: true});
+        })    
     }
 
     render () {
@@ -25,11 +44,18 @@ class NewPost extends Component {
         if (this.state.submitted) {
             redirect = <Redirect to="/posts" />
         }
+
+        let errorMessage = null;
+        if (this.props.error) {
+            errorMessage = (
+                <p>{this.props.error.message}</p>
+            );
+        }
         return (
             <Layout grid="new">
                 <Header />
+                {errorMessage}
                 <div className={classes.Pages}>
-                {redirect}
                 <h1>Add a Post</h1>
                 <label>Title</label>
                 <input 
