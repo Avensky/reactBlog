@@ -1,19 +1,43 @@
+import * as actionTypes from './actionTypes'
 import axios from '../../axios';
 
-export const newPost = (title, content, author) => {
+export const newPostStart  = (id, postData) =>{
+    return{
+        type: actionTypes.NEW_POST_START,
+        postId: id,
+        postData: postData
+    
+    }
+}
+
+export const newPostFail = (error) => {
+    return {
+        type: actionTypes.NEW_POST_FAIL,
+        error: error
+    }
+}
+
+export const newPostSuccess = () => {
+    return {
+        type: actionTypes.NEW_POST_SUCCESS
+    }
+}
+    
+export const newPost = (postData , token) => {
     return dispatch => {
-        const blogData = {
-            title: this.state.title,
-            body: this.state.content,
-            author: this.state.author
-        };
-        axios.post('/posts', blogData)
+        dispatch(newPostStart())
+        axios.post('/posts.json?auth=' + token, postData)
             .then(response => {
                 console.log(response);
-                this.props.history.push('/posts');
+                dispatch(newPostSuccess())
+                //this.props.history.push('/posts');
                 //this.setState( { submitted: true } )
         })
-    }        
+        .catch(error => {
+            console.log(error);
+            dispatch(newPostFail(error))
+        })    
+    }
 }
 
 export const post = (post) => {

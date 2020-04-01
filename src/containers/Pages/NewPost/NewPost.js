@@ -7,6 +7,7 @@ import classes from '../Pages.module.css';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import axios from '../../../axios';
+
 class NewPost extends Component {
     state = {
         title: '',
@@ -21,19 +22,13 @@ class NewPost extends Component {
   //      console.log(this.props);
   //  }
 
-    postDataHandler = () => {
+    postDataHandler = (token) => {
         const postData = {
             title: this.state.title,
             body: this.state.content,
             author: this.state.author
         };
-        let axiosConfig = {
-            headers: {
-//                'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*"
-            }
-          };
-        axios.post('/posts.json', postData, axiosConfig)
+        axios.post('/posts.json?auth=' + token, postData)
             .then(response => {
                 console.log(response);
                 //this.props.history.push('/posts');
@@ -60,6 +55,7 @@ class NewPost extends Component {
         return (
             <Layout grid="new">
                 <Header />
+                {redirect}
                 {errorMessage}
                 <div className={classes.Pages}>
                 <h1>Add a Post</h1>
@@ -95,9 +91,16 @@ class NewPost extends Component {
         );
     }
 }
+const mapStateToProps = state => {
+    return {
+        post: state.newPost.post,
+        isLoggedIn: state.auth.token !== null
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onNewPost: (title, content, author) => dispatch(actions.newPost(title, content, author))
     }
 }
-export default connect(null, mapDispatchToProps)(NewPost);
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

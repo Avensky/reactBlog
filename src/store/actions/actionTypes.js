@@ -4,4 +4,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL'
 export const LOGOUT = 'LOGOUT'
 export const SET_LOGIN_REDIRECT_PATH = 'SET_LOGIN_REDIRECT_PATH'
 
+export const NEW_POST_START = 'NEW_POST_START'
+export const NEW_POST_SUCCESS = 'NEW_POST_SUCCESS'
+export const NEW_POST_FAIL = 'NEW_POST_FAIL'
 export const NEW_POST = 'NEW_POST'

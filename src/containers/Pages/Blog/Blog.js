@@ -13,19 +13,18 @@ class Blog extends Component {
         posts: []
     }
 
-    componentDidMount() {
+    componentDidMount(token) {
         console.log(this.props);
-        axios.get('/posts')
-            .then(response => {
-                const posts = response.data.slice(0, 4);
-                const updatedPosts = posts.map(post => {
-                    return {
-                        ...post,
-                        author: 'Max'
-                    }
-                });
-                this.setState({posts: updatedPosts});
-                //console.log(response)
+        const queryParams = '?auth=' + token;
+        axios.get( '/orders.json' + queryParams)
+            .then( res => {
+                const fetchedOrders = [];
+                for ( let key in res.data ) {
+                    fetchedOrders.push( {
+                        ...res.data[key],
+                        id: key
+                    } );
+                }
             })
             .catch(error => {
                 console.log(error)
