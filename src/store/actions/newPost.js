@@ -1,10 +1,9 @@
 import * as actionTypes from './actionTypes'
 import axios from '../../axios';
 
-export const newPostStart  = (id, postData) =>{
+export const newPostStart  = () =>{
     return{
-        type: actionTypes.NEW_POST_START,
-        postId: id
+        type: actionTypes.NEW_POST_START
     }
 }
 
@@ -15,21 +14,21 @@ export const newPostFail = (error) => {
     }
 }
 
-export const newPostSuccess = () => {
+export const newPostSuccess = (orderData) => {
     return {
-        type: actionTypes.NEW_POST_SUCCESS
+        type: actionTypes.NEW_POST_SUCCESS,
+        orderData: orderData
     }
 }
     
 export const newPost = (title, content, author) => {
     return dispatch => {
         const postData={title, content, author}
-
         dispatch(newPostStart())
         axios.post('/posts.json', postData)
             .then(response => {
                 console.log(response);
-//                dispatch(newPostSuccess(response.data.name, postData))
+                dispatch(newPostSuccess(response.data.name, postData))
                 //this.props.history.push('/posts');
                 //this.setState( { submitted: true } )
         })
