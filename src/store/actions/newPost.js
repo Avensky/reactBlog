@@ -4,9 +4,7 @@ import axios from '../../axios';
 export const newPostStart  = (id, postData) =>{
     return{
         type: actionTypes.NEW_POST_START,
-        postId: id,
-        postData: postData
-    
+        postId: id
     }
 }
 
@@ -23,13 +21,15 @@ export const newPostSuccess = () => {
     }
 }
     
-export const newPost = (postData , token) => {
+export const newPost = (title, content, author) => {
     return dispatch => {
+        const postData={title, content, author}
+
         dispatch(newPostStart())
-        axios.post('/posts.json?auth=' + token, postData)
+        axios.post('/posts.json', postData)
             .then(response => {
                 console.log(response);
-                dispatch(newPostSuccess())
+//                dispatch(newPostSuccess(response.data.name, postData))
                 //this.props.history.push('/posts');
                 //this.setState( { submitted: true } )
         })
@@ -38,24 +38,4 @@ export const newPost = (postData , token) => {
             dispatch(newPostFail(error))
         })    
     }
-}
-
-export const post = (post) => {
-    console.log(this.props);
-    axios.get('/posts')
-        .then(response => {
-            const posts = response.data.slice(0, 4);
-            const updatedPosts = posts.map(post => {
-                return {
-                    ...post,
-                    author: 'Max'
-                }
-            });
-            this.setState({posts: updatedPosts});
-            //console.log(response)
-        })
-        .catch(error => {
-            console.log(error)
-            //this.setState({error: true})
-        })
 }

@@ -6,38 +6,58 @@ import './NewPost.css';
 import classes from '../Pages.module.css';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
-import axios from '../../../axios';
+// import axios from '../../../axios';
 
 class NewPost extends Component {
     state = {
-        title: '',
-        content: '',
-        author: 'Max',
+        postForm:{
+            title: {
+                value: '',
+                validation: {
+                    required: true,
+                    isEmail: true
+                }
+            },
+            content: {
+                value: '',
+                validation: {
+                    required: true,
+                    isEmail: true
+                }
+            },
+            author: {
+                value: '',
+                validation: {
+                    required: true,
+                    isEmail: true
+                }
+            }
+        },
         submitted: false,
         error: null
     }
 
-  //  componentDidMount () {
-  //      // If unauth => this.props.history.replace('/posts')
-  //      console.log(this.props);
-  //  }
+    newPostHandler = (event) => {
+        event.preventDefault();
+        this.props.onNewPost(
+            this.state.postForm.title.value, 
+            this.state.postForm.content.value, 
+            this.state.postForm.author.value 
+        );
+    }
 
-    postDataHandler = (token) => {
-        const postData = {
-            title: this.state.title,
-            body: this.state.content,
-            author: this.state.author
+    
+    inputChangedHandler = ( event, controlName ) => {
+        const updatedControls = {
+            ...this.state.postForm,
+            [controlName]: {
+                ...this.state.postForm[controlName],
+                value: event.target.value,
+//                valid: this.checkValidity( event.target.value, this.state.postForm[controlName].validation ),
+                touched: true
+            }
         };
-        axios.post('/posts.json?auth=' + token, postData)
-            .then(response => {
-                console.log(response);
-                //this.props.history.push('/posts');
-                //this.setState( { submitted: true } )
-        })
-        .catch(error => {
-            console.log(error);
-            this.setState({error: true});
-        })    
+        this.setState( { postForm: updatedControls } );
     }
 
     render () {
@@ -52,40 +72,40 @@ class NewPost extends Component {
                 <p>{this.props.error.message}</p>
             );
         }
-        return (
-            <Layout grid="new">
-                <Header />
-                {redirect}
+
+        let form = (
+            <form className={classes.Pages} onSubmit={this.newPostHandler}>
+                <legend>Add a Post</legend>
                 {errorMessage}
-                <div className={classes.Pages}>
-                <h1>Add a Post</h1>
                 <label>Title</label>
                 <input 
                     type="text" 
-                    value={this.state.title} 
-                    onChange={(event) => this.setState({title: event.target.value})} 
+                    onChange={(event) => this.inputChangedHandler( event, "title")}
                     placeholder="Blog Title"    
                 />
                 <label>Content</label>
                 <textarea
                     type="textarea"
                     rows="4" 
-                    value={this.state.content} 
-                    onChange={(event) => this.setState({content: event.target.value})} 
+                    onChange={(event) => this.inputChangedHandler( event, "content")}
                 />
                 <label>Author</label>
-                <select 
-                    value={this.state.author} 
-                    onChange={(event) => this.setState({author: event.target.value})}>
-                    <option value="Max">Max</option>
-                    <option value="Manu">Manu</option>
-                </select>
+                <input 
+                    type="text" 
+                    onChange={(event) => this.inputChangedHandler( event, "author")}
+                />
                 <button 
                     className={classes.btn} 
-                    onClick={this.postDataHandler}
-                    >Add Post</button>
-            </div>
-
+                    >Add Post
+                </button>
+            </form>
+        )
+        return (
+            <Layout grid="new">
+                <Header />
+                {redirect}
+                {errorMessage}
+                {form}
             </Layout>
             
         );
@@ -93,8 +113,8 @@ class NewPost extends Component {
 }
 const mapStateToProps = state => {
     return {
-        post: state.newPost.post,
-        isLoggedIn: state.auth.token !== null
+        isLoggedIn: state.auth.token !== null,
+        userId: state.auth.userId
     }
 }
 

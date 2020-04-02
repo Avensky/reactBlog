@@ -13,15 +13,14 @@ class Blog extends Component {
         posts: []
     }
 
-    componentDidMount(token) {
-        console.log(this.props);
-        const queryParams = '?auth=' + token;
-        axios.get( '/orders.json' + queryParams)
-            .then( res => {
-                const fetchedOrders = [];
-                for ( let key in res.data ) {
-                    fetchedOrders.push( {
-                        ...res.data[key],
+    componentDidMount() {
+        console.log(this.props)
+        axios.get( '/posts.json')
+            .then( response => {
+                const fetchedPosts = [];
+                for ( let key in response.data ) {
+                    fetchedPosts.push( {
+                        ...response.data[key],
                         id: key
                     } );
                 }
