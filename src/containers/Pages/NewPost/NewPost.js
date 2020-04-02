@@ -36,6 +36,11 @@ class NewPost extends Component {
         error: null
     }
 
+    componentDidMount () {
+        console.log(this.props);
+        this.props.onNewPostInit();
+    }
+
     newPostHandler = (event) => {
         event.preventDefault();
         this.props.onNewPost(
@@ -43,6 +48,16 @@ class NewPost extends Component {
             this.state.postForm.content.value, 
             this.state.postForm.author.value 
         );
+    }
+    newPostCancelHandler = () => {
+        this.setState({
+
+        })
+    }
+
+    newPostContinueHandler = () => {
+        this.props.onNewPostInit();
+//        this.props.history.push('/home')
     }
 
     inputChangedHandler = ( event, controlName ) => {
@@ -121,7 +136,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onNewPost: (title, content, author) => dispatch(actions.newPost(title, content, author)),
-        onSetNewPostRedirectPath: () => dispatch(actions.setNewPostRedirectPath('/'))
+        onSetNewPostRedirectPath: () => dispatch(actions.setNewPostRedirectPath('/')),
+        onNewPostInit: () => dispatch(actions.newPostInit())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NewPost);
