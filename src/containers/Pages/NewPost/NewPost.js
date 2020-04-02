@@ -33,7 +33,6 @@ class NewPost extends Component {
                 }
             }
         },
-        submitted: false,
         error: null
     }
 
@@ -46,7 +45,6 @@ class NewPost extends Component {
         );
     }
 
-    
     inputChangedHandler = ( event, controlName ) => {
         const updatedControls = {
             ...this.state.postForm,
@@ -62,8 +60,8 @@ class NewPost extends Component {
 
     render () {
         let redirect = null;
-        if (this.state.submitted) {
-            redirect = <Redirect to="/posts" />
+        if (this.props.submitted) {
+            redirect = <Redirect to="/home" />
         }
 
         let errorMessage = null;
@@ -100,6 +98,7 @@ class NewPost extends Component {
                 </button>
             </form>
         )
+        
         return (
             <Layout grid="new">
                 <Header />
@@ -114,13 +113,15 @@ class NewPost extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.auth.token !== null,
-        userId: state.auth.userId
+        userId: state.auth.userId,
+        submitted: state.newPost.submitted
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onNewPost: (title, content, author) => dispatch(actions.newPost(title, content, author))
+        onNewPost: (title, content, author) => dispatch(actions.newPost(title, content, author)),
+        onSetNewPostRedirectPath: () => dispatch(actions.setNewPostRedirectPath('/'))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

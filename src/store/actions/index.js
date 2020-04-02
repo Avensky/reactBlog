@@ -6,5 +6,9 @@ export {
 } from './auth';
 
 export {
-    newPost
+    newPost,
+    newPostInit,
+    setNewPostRedirectPath,
+    
+
 } from './newPost';

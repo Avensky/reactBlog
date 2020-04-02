@@ -8,3 +8,8 @@ export const NEW_POST_START = 'NEW_POST_START'
 export const NEW_POST_SUCCESS = 'NEW_POST_SUCCESS'
 export const NEW_POST_FAIL = 'NEW_POST_FAIL'
 export const NEW_POST = 'NEW_POST'
+
+export const SET_NEW_POST_REDIRECT_PATH = 'SET_NEW_POST_REDIRECT_PATH'
+
+export const NEW_POST_INIT = 'NEW_POST_INIT'
+

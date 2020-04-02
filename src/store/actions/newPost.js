@@ -1,6 +1,13 @@
 import * as actionTypes from './actionTypes'
 import axios from '../../axios';
 
+export const setNewPostRedirectPath  = (path) =>{
+    return{
+        type: actionTypes.SET_NEW_POST_REDIRECT_PATH,
+        path: path
+    }
+}
+
 export const newPostStart  = () =>{
     return{
         type: actionTypes.NEW_POST_START
@@ -14,10 +21,11 @@ export const newPostFail = (error) => {
     }
 }
 
-export const newPostSuccess = (orderData) => {
+export const newPostSuccess = (id, postData) => {
     return {
         type: actionTypes.NEW_POST_SUCCESS,
-        orderData: orderData
+        postId: id,
+        postData: postData
     }
 }
     
@@ -36,5 +44,11 @@ export const newPost = (title, content, author) => {
             console.log(error);
             dispatch(newPostFail(error))
         })    
+    }
+}
+
+export const newPostInit = () => {
+    return {
+        type: actionTypes.NEW_POST_INIT
     }
 }

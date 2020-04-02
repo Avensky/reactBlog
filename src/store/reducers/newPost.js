@@ -1,19 +1,37 @@
 import * as actionTypes from '../actions/actionTypes';
-//import { updateObject } from '../../utility/utility';
+import { updateObject } from '../../utility/utility';
 
 const initialState = {
+    posts: [],
+    loading: false,
+    submitted: false
 };
 
-const newPost = () => {
+const newPostInit = (state, action) => {
+    return updateObject( state, { submitted: false });}
 
+const newPostStart = (state, action) => {
+    return updateObject( state, { loading: true });}
+    
+const newPostSuccess = (state, action) => {
+    const newPost = updateObject(action.postData, { id: action.postId })
+    return updateObject(state, {
+        loading: false,
+        submitted: true,
+        posts: state.posts.concat( newPost )
+    })
+}
+const newPostFail = (state, action) => {
+    return updateObject( state, { loading: false } );
 }
 
 const reducer = ( state = initialState, action ) => {
-    
     switch ( action.type ) {
-        case actionTypes.NEW_POST: return newPost(state, action);
-        default:
-            return state;
+        case actionTypes.NEW_POST_SUCCESS: return newPostSuccess(state, action);
+        case actionTypes.NEW_POST_FAIL: return newPostFail(state, action);
+        case actionTypes.NEW_POST_START: return newPostStart(state, action);
+        case actionTypes.NEW_POST_INIT: return newPostInit(state, action);
+        default: return state;
     }
 };
 
