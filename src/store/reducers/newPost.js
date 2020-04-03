@@ -4,11 +4,10 @@ import { updateObject } from '../../utility/utility';
 const initialState = {
     posts: [],
     loading: false,
-    submitted: false
 };
 
 const newPostInit = (state, action) => {
-    return updateObject( state, { submitted: false });}
+    return updateObject( state, { posted: false });}
 
 const newPostStart = (state, action) => {
     return updateObject( state, { loading: true });}
@@ -17,13 +16,11 @@ const newPostSuccess = (state, action) => {
     const newPost = updateObject(action.postData, { id: action.postId })
     return updateObject(state, {
         loading: false,
-        submitted: true,
         posts: state.posts.concat( newPost )
     })
 }
 const newPostFail = (state, action) => {
-    return updateObject( state, { loading: false } );
-}
+    return updateObject( state, { loading: false } );}
 
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {

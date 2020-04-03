@@ -37,8 +37,6 @@ export const newPost = (title, content, author) => {
             .then(response => {
                 console.log(response);
                 dispatch(newPostSuccess(response.data.name, postData))
-                //this.props.history.push('/posts');
-                //this.setState( { submitted: true } )
         })
         .catch(error => {
             console.log(error);

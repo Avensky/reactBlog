@@ -38,11 +38,12 @@ class NewPost extends Component {
 
     componentDidMount () {
         console.log(this.props);
-        this.props.onNewPostInit();
     }
 
     newPostHandler = (event) => {
         event.preventDefault();
+        //this.props.onSetAuthRedirectPath('/checkout');
+        this.props.history.push('/blog');
         this.props.onNewPost(
             this.state.postForm.title.value, 
             this.state.postForm.content.value, 
@@ -74,11 +75,6 @@ class NewPost extends Component {
     }
 
     render () {
-        let redirect = null;
-        if (this.props.submitted) {
-            redirect = <Redirect to="/home" />
-        }
-
         let errorMessage = null;
         if (this.props.error) {
             errorMessage = (
@@ -94,31 +90,33 @@ class NewPost extends Component {
                 <input 
                     type="text" 
                     onChange={(event) => this.inputChangedHandler( event, "title")}
-                    placeholder="Blog Title"    
-                />
+                    placeholder="Blog Title"/>
                 <label>Content</label>
                 <textarea
                     type="textarea"
                     rows="4" 
-                    onChange={(event) => this.inputChangedHandler( event, "content")}
-                />
+                    onChange={(event) => this.inputChangedHandler( event, "content")}/>
                 <label>Author</label>
                 <input 
                     type="text" 
-                    onChange={(event) => this.inputChangedHandler( event, "author")}
-                />
+                    onChange={(event) => this.inputChangedHandler( event, "author")}/>
                 <button 
                     className={classes.btn} 
                     >Add Post
                 </button>
             </form>
         )
+
+        let newPostRedirect = null;
+        if (this.props.isPosted) {
+            newPostRedirect = <Redirect to="/blog" />
+        }
         
         return (
             <Layout grid="new">
                 <Header />
-                {redirect}
                 {errorMessage}
+                {newPostRedirect}
                 {form}
             </Layout>
             
@@ -127,17 +125,16 @@ class NewPost extends Component {
 }
 const mapStateToProps = state => {
     return {
+        error: state.newPost.error,
         isLoggedIn: state.auth.token !== null,
         userId: state.auth.userId,
-        submitted: state.newPost.submitted
+        newPostRedirectPath: state.newPost.newPostRedirectPath, 
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onNewPost: (title, content, author) => dispatch(actions.newPost(title, content, author)),
-        onSetNewPostRedirectPath: () => dispatch(actions.setNewPostRedirectPath('/')),
-        onNewPostInit: () => dispatch(actions.newPostInit())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NewPost);
