@@ -9,6 +9,8 @@ export {
     newPost,
     newPostInit,
     setNewPostRedirectPath,
-    
-
 } from './newPost';
+
+export {
+    fetchPosts
+} from './blog'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from '../../../axios';
+//import axios from '../../../axios';
 import classes from './Blog.module.css';
 import Header from '../../Layout/Header/Header';
 import Archives from '../../Archives/Archives';
@@ -7,6 +7,8 @@ import Post from './Posts/Post/Post';
 import {Route} from 'react-router-dom';
 import FullPost from './FullPost/FullPost';
 import Layout from '../../Layout/Layout';
+import {connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class Blog extends Component {
     state = {
@@ -15,20 +17,7 @@ class Blog extends Component {
 
     componentDidMount() {
         console.log(this.props)
-        axios.get( '/posts.json')
-            .then( response => {
-                const fetchedPosts = [];
-                for ( let key in response.data ) {
-                    fetchedPosts.push( {
-                        ...response.data[key],
-                        id: key
-                    } );
-                }
-            })
-            .catch(error => {
-                console.log(error)
-                //this.setState({error: true})
-            })
+        this.props.onFetchPosts()
     }
 
     postClickedHandler = (id) => {
@@ -38,11 +27,11 @@ class Blog extends Component {
 
     render (){
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>
-        if (!this.state.error) {
-            posts = this.state.posts.map(post => {
+        if (!this.props.error) {
+            posts = this.props.posts.map( post => {
                 return (
                     <Post
-                    key={post.id} 
+//                    key={post.id} 
                     title={post.title} 
                     author={post.author}
                     clicked={() => this.postClickedHandler(post.id)}
@@ -63,5 +52,15 @@ class Blog extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        posts: state.blog.posts
 
-export default Blog;
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchPosts:  () => dispatch( actions.fetchPosts())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps) (Blog);

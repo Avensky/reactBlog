@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+//import {Redirect} from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 import Header from '../../Layout/Header/Header';
 import './NewPost.css';
@@ -106,17 +106,11 @@ class NewPost extends Component {
                 </button>
             </form>
         )
-
-        let newPostRedirect = null;
-        if (this.props.isPosted) {
-            newPostRedirect = <Redirect to="/blog" />
-        }
         
         return (
             <Layout grid="new">
                 <Header />
                 {errorMessage}
-                {newPostRedirect}
                 {form}
             </Layout>
             
