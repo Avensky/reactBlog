@@ -3,7 +3,8 @@ import { updateObject } from '../../utility/utility';
 
 const initialState = {
     posts:[],
-    loading: false
+    featuredPost: [],
+    loading: false,
 }
 
 const fetchPostsStart = (state, action) => {
@@ -20,7 +21,8 @@ const fetchPostsFail = (state, action) => {
 const fetchPostsSuccess = (state, action) => {
     return updateObject( state, {
         posts: action.posts,
-        loading: false
+        featuredPost: action.featuredPost,
+        loading: false,
     })
 }
 

@@ -2,10 +2,11 @@ import axios from 'axios'
 import * as actionTypes from './actionTypes'
 
 
-export const fetchPostsSuccess = (posts) => {
+export const fetchPostsSuccess = (featuredPost) => {
     return {
         type:  actionTypes.FETCH_POSTS_SUCCESS, 
-        posts: posts
+        posts: featuredPost.slice(1, 5),
+        featuredPost: featuredPost.slice(0, 1),
     }
 }
 export const fetchPostsFail = (error) => {
@@ -32,7 +33,7 @@ export const fetchPosts = () => {
                         id: key
                     } );
                 }
-                dispatch(fetchPostsSuccess(fetchedPosts.slice(0, 4)));
+                dispatch(fetchPostsSuccess(fetchedPosts));
             } )
             .catch( error => {
                 dispatch(fetchPostsFail(error));

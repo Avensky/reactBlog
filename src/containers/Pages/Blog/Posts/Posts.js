@@ -1,33 +1,16 @@
 import React, {Component } from 'react';
-import axios from '../../../../axios';
 import Post from './Post/Post';
 import './Posts.css';
 import {Route} from 'react-router-dom';
+import {connect} from 'react-redux';
 import FullPost from '../FullPost/FullPost';
+import * as actions from '../../../../store/actions/index'
+
 
 class Posts extends Component {
-    state = {
-        posts: []
-    }
-
     componentDidMount() {
         console.log(this.props);
-        axios.get('/posts')
-            .then(response => {
-                const posts = response.data.slice(0, 4);
-                const updatedPosts = posts.map(post => {
-                    return {
-                        ...post,
-                        author: 'Max'
-                    }
-                });
-                this.setState({posts: updatedPosts});
-                //console.log(response)
-            })
-            .catch(error => {
-                console.log(error)
-                //this.setState({error: true})
-            })
+        this.props.onFetchPosts()
     }
 
     postClickedHandler = (id) => {
@@ -37,22 +20,21 @@ class Posts extends Component {
 
     render (){
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>
-        if (!this.state.error) {
-            posts = this.state.posts.map(post => {
+        if (!this.props.error) {
+            posts = this.props.posts.map( post => {
                 return (
-                        <Post
-                            key={post.id} 
-                            title={post.title} 
-                            author={post.author}
-                            clicked={() => this.postClickedHandler(post.id)}
-                        />
+                    <Post
+                    key={post.id} 
+                    title={post.title} 
+                    author={post.author}
+//                    clName={"Post"}
+                    clicked={() => this.postClickedHandler(post.id)}/>
                 )
             })
-
         }
+
         return (
             <div>
-
                 <section className="Posts">
                     {posts}
                 </section>
@@ -63,4 +45,16 @@ class Posts extends Component {
     }
 
 }
-export default Posts;
+const mapStateToProps = state => {
+    return {
+        posts: state.blog.posts,
+        featuredPost: state.blog.featuredPost,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchPosts:  () => dispatch( actions.fetchPosts())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps) (Posts);
