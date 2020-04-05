@@ -1,10 +1,10 @@
 import React, {Component } from 'react';
 import Post from './Post/Post';
-import './Posts.css';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import FullPost from '../FullPost/FullPost';
 import * as actions from '../../../../store/actions/index'
+import classes from './Posts.module.css';
 
 
 class Posts extends Component {
@@ -23,12 +23,15 @@ class Posts extends Component {
         if (!this.props.error) {
             posts = this.props.posts.map( post => {
                 return (
-                    <Post
-                    key={post.id} 
-                    title={post.title} 
-                    author={post.author}
-//                    clName={"Post"}
-                    clicked={() => this.postClickedHandler(post.id)}/>
+                    <div className={classes.Posts}>
+                        <Post
+                        key={post.id} 
+                        title={post.title} 
+                        author={post.author}
+    //                    clName={"Post"}
+                        clicked={() => this.postClickedHandler(post.id)}/>
+
+                    </div>
                 )
             })
         }

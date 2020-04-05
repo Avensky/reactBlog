@@ -4,7 +4,7 @@ import classes from './Blog.module.css';
 import Header from '../../Layout/Header/Header';
 import Archives from '../../Archives/Archives';
 import Post from './Posts/Post/Post';
-import Posts from './Posts/Posts';
+//import Posts from './Posts/Posts';
 import { Route } from 'react-router-dom';
 import FullPost from './FullPost/FullPost';
 import Layout from '../../Layout/Layout';
@@ -34,19 +34,22 @@ class Blog extends Component {
                     title={featured.title} 
                     author={featured.author}
                     content={featured.content}
-                    clName="FeaturedPost"
+                    clName={classes.FeaturedPost}
                     clicked={() => this.postClickedHandler(featured.id)}/>
                 )
             })
+            
             posts = this.props.posts.map( post => {
                 return (
-                    <Post
-                    key={post.id} 
-                    title={post.title} 
-                    author={post.author}
-                    content={post.content}
-//                    clName={"Post"}
-                    clicked={() => this.postClickedHandler(post.id)}/>
+                    <div className={classes.Posts}>
+                        <Post
+                            key={post.id} 
+                            title={post.title} 
+                            author={post.author}
+                            content={post.content}
+                            clicked={() => this.postClickedHandler(post.id)}
+                        />
+                    </div>
                 )
             })
         }

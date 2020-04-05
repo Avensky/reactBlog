@@ -10,9 +10,6 @@
     grid-gap: 1em;
     margin-bottom: 2%;
 }
-.FeaturedPost {
-    width: 100%;
-}
 
 .Card {
 	grid-template-columns: 3fr 1fr;
@@ -24,6 +21,9 @@
 }
 
 .CardTitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     grid-area: title;
     font-size: 1.75rem;
     font-weight: 800;
@@ -66,13 +66,15 @@
 .CardThumbnail {
     grid-area: thumbnail;
     margin: 0;
+    
 }
 .CardThumbnail img {
     justify-self: center;
     border-radius: 50%;
     border: 2px solid white;
     width: 100%;
-    height: auto;
+    height: 100%;
+    max-width: 300px;
     max-height: 300px;
 }
 

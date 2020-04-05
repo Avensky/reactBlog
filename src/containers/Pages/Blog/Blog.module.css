@@ -5,6 +5,11 @@
 .FeaturedPost {
     width: 100%;
 }
+.Posts{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
 
 .Blog ul {
     list-style: none;
