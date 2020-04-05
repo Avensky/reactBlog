@@ -33,6 +33,7 @@ class Blog extends Component {
                     key={featured.id} 
                     title={featured.title} 
                     author={featured.author}
+                    content={featured.content}
                     clName="FeaturedPost"
                     clicked={() => this.postClickedHandler(featured.id)}/>
                 )
@@ -43,6 +44,7 @@ class Blog extends Component {
                     key={post.id} 
                     title={post.title} 
                     author={post.author}
+                    content={post.content}
 //                    clName={"Post"}
                     clicked={() => this.postClickedHandler(post.id)}/>
                 )
