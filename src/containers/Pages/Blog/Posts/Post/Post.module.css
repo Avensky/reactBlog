@@ -1,10 +1,6 @@
 .Post {
-    text-align: center;
     box-sizing: border-box;
     cursor: pointer;
-    position: relative;
-
-    background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
     background-color: rgba(34,84,112,0.35);
@@ -19,39 +15,55 @@
 }
 
 .Card {
-	grid-template-rows: 1fr;
-	grid-template-columns: 1fr;
-	grid-template-areas:
-		"title title title thumbnail"
-		"author author author thumbnail"
-		"description description description thumbnail"
-		"description description description thumbnail"
+	grid-template-columns: 3fr 1fr;
+    grid-template-rows: max-content 1fr 100px;
+    grid-template-areas:
+		"title thumbnail"
+		"details thumbnail"
+		"description thumbnail"
 }
 
 .CardTitle {
     grid-area: title;
 }
 
-.CardAuthor {
-    grid-area: author
+.CardDetails h2 {
+    grid-area: details;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: .425em;
+    letter-spacing: 3px;
+    margin: .25em 0;
+    line-height: 1;
+    color: #5bcbf0;
+}
+
+.CardDetails muted{
+    grid-area: details;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: .425em;
+    letter-spacing: 3px;
+    margin: .25em 0;
+    line-height: 1;
+
 }
 
 .CardDescription {
-
+    flex: 1;
     grid-area: description
 }
 
 .CardThumbnail {
-    grid-area: thumbnail
+    grid-area: thumbnail;
+    margin: 0;
 }
 .CardThumbnail img {
     justify-self: center;
     border-radius: 50%;
     border: 2px solid white;
-	width: 100%;
-	height: 100%;
-	max-width: 200px;
-	max-height: 200px;
+    width: 100%;
+    height: auto;
 }
 
 .Post:hover,
