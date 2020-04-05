@@ -16,7 +16,7 @@
 
 .Card {
 	grid-template-columns: 3fr 1fr;
-    grid-template-rows: max-content 1fr 100px;
+    grid-template-rows:  50px 50px max-content;
     grid-template-areas:
 		"title thumbnail"
 		"details thumbnail"
@@ -25,24 +25,33 @@
 
 .CardTitle {
     grid-area: title;
+    font-size: 1.75rem;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.CardTitle h1{
+ margin: 0;
 }
 
 .CardDetails h2 {
     grid-area: details;
     display: inline-block;
     text-transform: uppercase;
-    font-size: .425em;
+    margin: .25em 0 .5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.2;
     letter-spacing: 3px;
-    margin: .25em 0;
-    line-height: 1;
-    color: #5bcbf0;
+    color: #42C3C9;
 }
 
-.CardDetails muted{
+.CardDetails p{
     grid-area: details;
     display: inline-block;
-    text-transform: uppercase;
-    font-size: .425em;
+    font-size: 1.15rem;
+    font-weight: 400;
     letter-spacing: 3px;
     margin: .25em 0;
     line-height: 1;
@@ -64,6 +73,7 @@
     border: 2px solid white;
     width: 100%;
     height: auto;
+    max-height: 300px;
 }
 
 .Post:hover,

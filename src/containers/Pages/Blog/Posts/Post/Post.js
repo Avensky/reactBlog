@@ -8,7 +8,7 @@ const post = (props) => {
     return (
         <article className={assignedClasses.join(' ')} onClick={props.clicked}>
             <div className={classes.CardTitle}><h1>{props.title}</h1></div>
-            <div className={classes.CardDetails}><h2>By{props.author}</h2> <muted>on 2019-12-07</muted></div> 
+            <div className={classes.CardDetails}><h2>By {props.author}</h2> <p>on 2019-12-07</p></div> 
             <div className={classes.CardDescription}>
             <TextTruncate
                 line={4}
