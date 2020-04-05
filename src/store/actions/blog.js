@@ -24,14 +24,15 @@ export const fetchPosts = () => {
         dispatch(fetchPostsStart());
         axios.get( '/posts.json')
         .then( result => {
-            const fetchedPosts = [];
-                for ( let key in result.data ) {
+            const posts = result.data
+            const fetchedPosts = []
+                for ( let key in posts ) {
                     fetchedPosts.push( {
                         ...result.data[key],
                         id: key
                     } );
                 }
-                dispatch(fetchPostsSuccess(fetchedPosts));
+                dispatch(fetchPostsSuccess(fetchedPosts.slice(0, 4)));
             } )
             .catch( error => {
                 dispatch(fetchPostsFail(error));

@@ -4,10 +4,10 @@ import classes from './Blog.module.css';
 import Header from '../../Layout/Header/Header';
 import Archives from '../../Archives/Archives';
 import Post from './Posts/Post/Post';
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import FullPost from './FullPost/FullPost';
 import Layout from '../../Layout/Layout';
-import {connect } from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 class Blog extends Component {
@@ -20,12 +20,33 @@ class Blog extends Component {
         this.props.onFetchPosts()
     }
 
+
     postClickedHandler = (id) => {
         //this.setState({clickedPostId: id})
         this.props.history.push('/posts/' + id);
     }
 
+//   paginatonOptions = {
+//       showSizeChanger: true,
+//       showQuickJumper: true,
+//       onShowSizeChange: (_, pageSize) => {
+//           this.props.onPageSize(pageSize)
+//           this.props.onFetchPosts()
+//       },
+//       onChange: (page) => {
+//           this.props.onPage(page)
+//           this.props.onFetchPosts()
+//       },
+//       pageSizeOptions: this.props.meta.pageSizeOptions,
+//       total: this.props.meta.total,
+//       showTotal: (total, range) => '{range[0]} to {range[1] of {total}',        
+//   }
+
     render (){
+        const pagination = {
+        
+        }
+ 
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>
         if (!this.props.error) {
             posts = this.props.posts.map( post => {
@@ -34,8 +55,7 @@ class Blog extends Component {
 //                    key={post.id} 
                     title={post.title} 
                     author={post.author}
-                    clicked={() => this.postClickedHandler(post.id)}
-                />
+                    clicked={() => this.postClickedHandler(post.id)}/>
                 )
             })
         }
@@ -54,10 +74,13 @@ class Blog extends Component {
 }
 const mapStateToProps = state => {
     return {
-        posts: state.blog.posts
-
+        posts: state.blog.posts,
+        total: state.blog.total,
+        current: state.blog.current,
+        pageSize: state.blog.pageSize,
     }
 }
+
 const mapDispatchToProps = dispatch => {
     return {
         onFetchPosts:  () => dispatch( actions.fetchPosts())
