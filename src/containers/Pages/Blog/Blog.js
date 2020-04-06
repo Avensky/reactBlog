@@ -24,30 +24,34 @@ class Blog extends Component {
     postClickedHandler = (id) => {
         this.setState({selectedPostId: id})
         this.props.onFetchPostsById(id)
-        this.props.history.push('blog/' + id);
+ //       this.props.history.push('blog/' + id);
     }
 
     render (){
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>
-        let featuredPost = <p style={{textAlign: 'center'}}>Something went wrong!</p>
-        let selectedPost = <p style={{textAlign: 'center'}}>Something went wrong!</p>
+        let featuredPost = null
+        let selectedPost = null
+
+
         if (!this.props.error) {
-            selectedPost = (
-                    <FullPost
-                        id={this.state.selectedPostId}
-                    />)
-            
-            featuredPost = this.props.featuredPost.map( featured => {
-                return (
-                    <Post
-                    key={featured.id} 
-                    title={featured.title} 
-                    author={featured.author}
-                    content={featured.content}
-                    clName={classes.FeaturedPost}
-                    clicked={() => this.postClickedHandler(featured.id)}/>
-                )
-            })
+
+            if (this.props.fetchedPostsById){
+                featuredPost = null;
+                selectedPost = (<FullPost id={this.state.selectedPostId} />)
+            }
+            else {
+                featuredPost = this.props.featuredPost.map( featured => {
+                    return (
+                        <Post
+                        key={featured.id} 
+                        title={featured.title} 
+                        author={featured.author}
+                        content={featured.content}
+                        clName={classes.FeaturedPost}
+                        clicked={() => this.postClickedHandler(featured.id)}/>
+                    )
+                })
+            }
             
             posts = this.props.posts.map( post => {
                 return (
