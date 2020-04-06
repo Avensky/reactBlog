@@ -12,5 +12,6 @@ export {
 } from './newPost';
 
 export {
-    fetchPosts
+    fetchPosts,
+    fetchPostsById
 } from './blog'

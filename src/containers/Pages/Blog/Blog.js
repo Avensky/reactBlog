@@ -12,6 +12,9 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 class Blog extends Component {
+    state = {
+        selectedPostId: null
+    }
     componentDidMount() {
         console.log(this.props)
         this.props.onFetchPosts()
@@ -19,8 +22,8 @@ class Blog extends Component {
 
 
     postClickedHandler = (id) => {
-        //this.setState({clickedPostId: id})
-        this.props.history.push('/posts/' + id);
+        this.setState({selectedPostId: id})
+ //       this.props.history.push('blog/' + id);
     }
 
     render (){
@@ -60,8 +63,10 @@ class Blog extends Component {
                 <section className={classes.Blog}>
                     {featuredPost}
                     {posts}
+                    <FullPost
+                        id={this.state.selectedPostId}
+                    />
                 </section>
-                <Route path={this.props.match.url + '/:id'} component={FullPost} />
                 <Archives 
 //                        key={archive.id} 
 //                        title={archive.title} 
@@ -83,7 +88,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchPosts:  () => dispatch( actions.fetchPosts())
+        onFetchPosts:  () => dispatch( actions.fetchPosts()),
+        onFetchPostsById:  (id) => dispatch( actions.fetchPostsById(id)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps) (Blog);

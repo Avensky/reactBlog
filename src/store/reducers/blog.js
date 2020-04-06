@@ -5,6 +5,7 @@ const initialState = {
     posts:[],
     featuredPost: [],
     fetchedPosts: [],
+    fetchedPostsById: [],
     loading: false,
 }
 
@@ -24,6 +25,23 @@ const fetchPostsSuccess = (state, action) => {
         posts: action.posts,
         featuredPost: action.featuredPost,
         fetchedPosts: action.fetchedPosts,
+    })
+}
+
+const fetchPostsByIdStart = (state, action) => {
+    return updateObject( state, {
+        loading: true
+    })
+}
+
+const fetchPostsByIdFail = (state, action) => {
+    return updateObject( state, {
+        loading: false
+    })
+}
+const fetchPostsByIdSuccess = (state, action) => {
+    return updateObject( state, {
+        fetchedPostsById: action.fetchedPostsById,
         loading: false,
     })
 }
@@ -33,6 +51,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_POSTS_START: return fetchPostsStart(state, action);
         case actionTypes.FETCH_POSTS_FAIL: return fetchPostsFail(state, action);
         case actionTypes.FETCH_POSTS_SUCCESS: return fetchPostsSuccess(state, action);
+        case actionTypes.FETCH_POSTS_BY_ID_START: return fetchPostsByIdStart(state, action);
+        case actionTypes.FETCH_POSTS_BY_ID_FAIL: return fetchPostsByIdFail(state, action);
+        case actionTypes.FETCH_POSTS_BY_ID_SUCCESS: return fetchPostsByIdSuccess(state, action);
         default: return state;     
     }
 }

@@ -7,7 +7,7 @@ class Archives extends Component {
 
 	componentDidMount() {
         console.log(this.props)
-        this.props.onFetchPosts()
+//        this.props.onFetchPosts()
 	}
 	
 	fetchYearHandler() {
@@ -36,6 +36,7 @@ class Archives extends Component {
 				<p className="ArchiveTitle">Blog Archive</p>
 				<div className="list">
 					<ul>
+						{showYears}
 						<div className="ArchiveList-item">
 						<ul>
 							{showYears}

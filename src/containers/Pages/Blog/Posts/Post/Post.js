@@ -24,7 +24,8 @@ class post extends Component {
                     <img src={user} alt="user"/>
                 </figure>
                 
-            </article>)
+            </article>
+        )
     }
 }
 
