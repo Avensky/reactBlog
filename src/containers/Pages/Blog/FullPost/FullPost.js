@@ -26,12 +26,12 @@ class FullPost extends Component {
 
     componentDidUpdate() {
         console.log(this.props)
-        if ( this.props.id ) {
-            if ( !this.props.fetchedPostsById 
-                || (this.props.fetchedPostsById && this.props.fetchedPostsById.id !== this.props.id) ) {
-                this.props.onFetchPostsById(this.props.id)
-            }
-        }
+//       if ( this.props.id ) {
+//           if ( !this.props.fetchedPostsById 
+//               || (this.props.fetchedPostsById && this.props.fetchedPostsById.id !== this.props.id) ) {
+//               this.props.onFetchPostsById(this.props.id)
+//           }
+//       }
     }
 
     loadData () {

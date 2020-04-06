@@ -23,6 +23,7 @@ class Blog extends Component {
 
     postClickedHandler = (id) => {
         this.setState({selectedPostId: id})
+        this.props.onFetchPostsById(id)
         this.props.history.push('blog/' + id);
     }
 
@@ -86,7 +87,8 @@ const mapStateToProps = state => {
     return {
         posts: state.blog.posts,
         featuredPost: state.blog.featuredPost,
-        fetchedPosts: state.blog.fetchedPosts
+        fetchedPosts: state.blog.fetchedPosts,
+        fetchedPostsById: state.blog.fetchedPostsById
     }
 }
 
