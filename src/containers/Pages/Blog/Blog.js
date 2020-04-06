@@ -5,7 +5,7 @@ import Header from '../../Layout/Header/Header';
 import Archives from '../../Archives/Archives';
 import Post from './Posts/Post/Post';
 //import Posts from './Posts/Posts';
-import { Route } from 'react-router-dom';
+//import { Route } from 'react-router-dom';
 import FullPost from './FullPost/FullPost';
 import Layout from '../../Layout/Layout';
 import { connect } from 'react-redux';
@@ -23,13 +23,19 @@ class Blog extends Component {
 
     postClickedHandler = (id) => {
         this.setState({selectedPostId: id})
- //       this.props.history.push('blog/' + id);
+        this.props.history.push('blog/' + id);
     }
 
     render (){
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>
-        let featuredPost = <p style={{textAlign: 'center'}}>Something went wrong!</p> 
+        let featuredPost = <p style={{textAlign: 'center'}}>Something went wrong!</p>
+        let selectedPost = <p style={{textAlign: 'center'}}>Something went wrong!</p>
         if (!this.props.error) {
+            selectedPost = (
+                    <FullPost
+                        id={this.state.selectedPostId}
+                    />)
+            
             featuredPost = this.props.featuredPost.map( featured => {
                 return (
                     <Post
@@ -61,11 +67,9 @@ class Blog extends Component {
             <Layout grid="blog">
                 <Header />
                 <section className={classes.Blog}>
+                    {selectedPost}
                     {featuredPost}
                     {posts}
-                    <FullPost
-                        id={this.state.selectedPostId}
-                    />
                 </section>
                 <Archives 
 //                        key={archive.id} 

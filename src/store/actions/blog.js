@@ -43,9 +43,10 @@ export const fetchPosts = () => {
     };
 }
 
-export const fetchPostsByIdSuccess = () => {
+export const fetchPostsByIdSuccess = (fetchedPostsById) => {
     return {
-        type:  actionTypes.FETCH_POSTS_BY_ID_SUCCESS, 
+        type:  actionTypes.FETCH_POSTS_BY_ID_SUCCESS,
+        fetchedPostsById: fetchedPostsById,
     }
 }
 export const fetchPostsByIdFail = (error) => {
@@ -62,17 +63,10 @@ export const fetchPostsByIdStart = () => {
 export const fetchPostsById = (id) => {
     return dispatch => {
         dispatch(fetchPostsByIdStart());
-        axios.get( '/posts/' + id)
+        axios.get( '/posts/' + id + '.json')
         .then( result => {
             console.log(result)
-            const posts = result.data
-            const fetchedPostsById = []
-                for ( let key in posts ) {
-                    fetchedPostsById.push( {
-                        ...result.data[key],
-                        id: key
-                    } );
-                }
+            let fetchedPostsById = result.data
             dispatch(fetchPostsByIdSuccess(fetchedPostsById));
         })
         .catch( error => {
