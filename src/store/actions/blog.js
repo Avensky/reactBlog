@@ -7,6 +7,7 @@ export const fetchPostsSuccess = (fetchedPosts) => {
         type:  actionTypes.FETCH_POSTS_SUCCESS, 
         posts: fetchedPosts.slice(1, 5),
         featuredPost: fetchedPosts.slice(0, 1),
+        fetchedPosts: fetchedPosts,
     }
 }
 export const fetchPostsFail = (error) => {

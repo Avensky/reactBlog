@@ -4,6 +4,7 @@ import { updateObject } from '../../utility/utility';
 const initialState = {
     posts:[],
     featuredPost: [],
+    fetchedPosts: [],
     loading: false,
 }
 
@@ -22,6 +23,7 @@ const fetchPostsSuccess = (state, action) => {
     return updateObject( state, {
         posts: action.posts,
         featuredPost: action.featuredPost,
+        fetchedPosts: action.fetchedPosts,
         loading: false,
     })
 }

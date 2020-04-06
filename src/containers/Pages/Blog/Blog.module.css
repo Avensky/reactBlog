@@ -6,9 +6,9 @@
     width: 100%;
 }
 .Posts{
-    display: inline-flex;
-    flex-wrap: wrap;
     width: 50%;
+    display: inline-flex;
+    justify-content: space-between;
 }
 
 .Blog ul {

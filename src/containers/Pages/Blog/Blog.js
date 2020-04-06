@@ -62,7 +62,13 @@ class Blog extends Component {
                     {posts}
                 </section>
                 <Route path={this.props.match.url + '/:id'} component={FullPost} />
-                <Archives />
+                <Archives 
+//                        key={archive.id} 
+//                        title={archive.title} 
+//                        author={archive.author}
+//                        content={archive.content}
+//                        clicked={() => this.postClickedHandler(archive.id)}
+                    />
             </Layout>
         )
     }
@@ -71,6 +77,7 @@ const mapStateToProps = state => {
     return {
         posts: state.blog.posts,
         featuredPost: state.blog.featuredPost,
+        fetchedPosts: state.blog.fetchedPosts
     }
 }
 
