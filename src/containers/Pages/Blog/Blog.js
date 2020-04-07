@@ -5,16 +5,13 @@ import Header from '../../Layout/Header/Header';
 import Archives from '../../Archives/Archives';
 import Post from './Posts/Post/Post';
 //import Posts from './Posts/Posts';
-//import { Route } from 'react-router-dom';
-import FullPost from './FullPost/FullPost';
+//import { Redirect, NavLink } from 'react-router-dom';
+//import FullPost from './FullPost/FullPost';
 import Layout from '../../Layout/Layout';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 class Blog extends Component {
-    state = {
-        selectedPostId: null
-    }
     componentDidMount() {
         console.log(this.props)
         this.props.onFetchPosts()
@@ -22,45 +19,31 @@ class Blog extends Component {
 
 
     postClickedHandler = (id) => {
-        this.setState({selectedPostId: id})
         this.props.onFetchPostsById(id)
- //       this.props.history.push('blog/' + id);
+        this.props.history.push('fullPost/' + id);
     }
 
-    deletePostHandler = (id) => {
-        this.setState({selectedPostId: null})
-        this.props.onDeletePost(id)
+    clearSelectedPost = () =>{
+ //       this.props.history.push('blog/');
     }
 
     render (){
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>
-        let featuredPost = null
-        let selectedPost = null
-
-
+        let featuredPost = <p style={{textAlign: 'center'}}>Something went wrong!</p>
         if (!this.props.error) {
-
-            if (this.props.fetchedPostsById){
-                featuredPost = null;
-                selectedPost = (
-                    <FullPost 
-                        id={this.state.selectedPostId}
-                        clicked={() => this.deletePostHandler(this.state.selectedPostId)}
-                    />)
-            }
-            else {
-                featuredPost = this.props.featuredPost.map( featured => {
-                    return (
+            featuredPost = this.props.featuredPost.map( featured => {
+                return ( 
                         <Post
-                        key={featured.id} 
-                        title={featured.title} 
-                        author={featured.author}
-                        content={featured.content}
-                        clName={classes.FeaturedPost}
-                        clicked={() => this.postClickedHandler(featured.id)}/>
-                    )
-                })
-            }
+                            key={featured.id} 
+                            title={featured.title} 
+                            author={featured.author}
+                            content={featured.content}
+                            clName={classes.FeaturedPost}
+                            clicked={() => this.postClickedHandler(featured.id)}
+                        /> 
+                )
+            })
+            
             
             posts = this.props.posts.map( post => {
                 return (
@@ -81,7 +64,6 @@ class Blog extends Component {
             <Layout grid="blog">
                 <Header />
                 <section className={classes.Blog}>
-                    {selectedPost}
                     {featuredPost}
                     {posts}
                 </section>
@@ -109,7 +91,6 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchPosts:  () => dispatch( actions.fetchPosts()),
         onFetchPostsById:  (id) => dispatch( actions.fetchPostsById(id)),
-        onDeletePost: (id) => dispatch( actions.deletePost(id)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps) (Blog);

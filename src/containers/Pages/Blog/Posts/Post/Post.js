@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import user from '../../../../../assets/images/user.jpg'
 import classes from './Post.module.css';
 import TextTruncate from 'react-text-truncate'; // recommend
+//import { NavLink } from 'react-router-dom'
 
 class post extends Component {
     render () {
@@ -22,8 +23,7 @@ class post extends Component {
                 </div>
                 <figure className={classes.CardThumbnail}>
                     <img src={user} alt="user"/>
-                </figure>
-                
+                </figure> 
             </article>
         )
     }

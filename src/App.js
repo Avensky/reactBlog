@@ -14,6 +14,7 @@ import Register from './containers/Pages/Register/Register';
 //import asyncComponent from './hoc/asyncComponent';
 import Wrapper from './components/Wrapper/Wrapper';
 import Logout from './containers/Pages/Logout/Logout';
+import FullPost from './containers/Pages/Blog/FullPost/FullPost';
 
 class App extends Component {
   componentDidMount () {
@@ -25,6 +26,7 @@ class App extends Component {
       <Switch>
         <Route path="/home" exact component={Home} />
         <Route path="/blog" component={Blog} />
+        <Route path="/fullPost" component={FullPost} />
         <Route path="/posts" exact component={Posts} />
         <Route path="/about" component={About} />
         <Route path="/projects" component={Projects} />
@@ -40,13 +42,14 @@ class App extends Component {
         <Switch>
           <Route path="/home" exact component={Home} />
           <Route path="/blog" component={Blog} />
+          <Route path="/fullPost" component={FullPost} />
           <Route path="/about" component={About} />
           <Route path="/posts" exact component={Posts} />
           <Route path="/newPost" exact component={NewPost} />
           <Route path="/projects" component={Projects} />
           <Route path="/account" component={Account} />
           <Route path="/logout" component={Logout} />
-          <Redirect to="/home" />    
+           {/* <Redirect to="/home" />    */}  
         </Switch>
       )
     }

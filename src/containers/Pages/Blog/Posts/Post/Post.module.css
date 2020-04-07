@@ -77,12 +77,12 @@
     max-width: 300px;
     max-height: 300px;
 }
-
+/*
 .Post:hover,
 .Post:active {
     background-color: #C0DDF5;
 }
-
+*/
 .Author {
     margin: 16px 0;
     color: #ccc;
