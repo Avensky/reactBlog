@@ -74,3 +74,35 @@ export const fetchPostsById = (id) => {
         });
     };
 }
+
+
+export const deletePostSuccess = () => {
+    return {
+        type:  actionTypes.DELETE_POST_SUCCESS, 
+    }
+}
+export const deletePostFail = (error) => {
+    return {
+        type:  actionTypes.DELETE_POST_FAIL, 
+        error: error
+    }
+}
+export const deletePostStart = () => {
+    return {
+        type:  actionTypes.DELETE_POST_START
+    }
+}
+
+export const deletePost = (id) => {
+    return dispatch => {
+        dispatch(deletePostStart());
+        axios.delete( '/posts/' + id + '.json')
+        .then( result => {
+            console.log(result)
+            dispatch(deletePostSuccess());
+        })
+        .catch( error => {
+            dispatch(deletePostFail(error));
+        });
+    };
+}

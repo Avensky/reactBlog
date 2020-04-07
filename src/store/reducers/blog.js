@@ -46,6 +46,24 @@ const fetchPostsByIdSuccess = (state, action) => {
     })
 }
 
+const deletePostStart = (state, action) => {
+    return updateObject( state, {
+        loading: true
+    })
+}
+
+const deletePostFail = (state, action) => {
+    return updateObject( state, {
+        loading: false
+    })
+}
+const deletePostSuccess = (state, action) => {
+    return updateObject( state, {
+        fetchedPostsById: null,
+        loading: false,
+    })
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_POSTS_START: return fetchPostsStart(state, action);
@@ -54,6 +72,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_POSTS_BY_ID_START: return fetchPostsByIdStart(state, action);
         case actionTypes.FETCH_POSTS_BY_ID_FAIL: return fetchPostsByIdFail(state, action);
         case actionTypes.FETCH_POSTS_BY_ID_SUCCESS: return fetchPostsByIdSuccess(state, action);
+        case actionTypes.DELETE_POST_START: return deletePostStart(state, action);
+        case actionTypes.DELETE_POST_FAIL: return deletePostFail(state, action);
+        case actionTypes.DELETE_POST_SUCCESS: return deletePostSuccess(state, action);
         default: return state;     
     }
 }

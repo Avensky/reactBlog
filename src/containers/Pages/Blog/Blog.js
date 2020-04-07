@@ -27,6 +27,11 @@ class Blog extends Component {
  //       this.props.history.push('blog/' + id);
     }
 
+    deletePostHandler = (id) => {
+        this.setState({selectedPostId: null})
+        this.props.onDeletePost(id)
+    }
+
     render (){
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>
         let featuredPost = null
@@ -37,7 +42,11 @@ class Blog extends Component {
 
             if (this.props.fetchedPostsById){
                 featuredPost = null;
-                selectedPost = (<FullPost id={this.state.selectedPostId} />)
+                selectedPost = (
+                    <FullPost 
+                        id={this.state.selectedPostId}
+                        clicked={() => this.deletePostHandler(this.state.selectedPostId)}
+                    />)
             }
             else {
                 featuredPost = this.props.featuredPost.map( featured => {
@@ -100,6 +109,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchPosts:  () => dispatch( actions.fetchPosts()),
         onFetchPostsById:  (id) => dispatch( actions.fetchPostsById(id)),
+        onDeletePost: (id) => dispatch( actions.deletePost(id)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps) (Blog);
