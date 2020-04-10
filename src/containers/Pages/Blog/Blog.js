@@ -73,7 +73,7 @@ class Blog extends Component {
 //                        author={archive.author}
 //                        content={archive.content}
 //                        clicked={() => this.postClickedHandler(archive.id)}
-                    />
+                />
             </Layout>
         )
     }

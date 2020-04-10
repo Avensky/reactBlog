@@ -49,7 +49,7 @@ class App extends Component {
           <Route path="/projects" component={Projects} />
           <Route path="/account" component={Account} />
           <Route path="/logout" component={Logout} />
-           <Redirect to="/home" /> 
+          <Redirect to="/home" /> 
         </Switch>
       )
     }
