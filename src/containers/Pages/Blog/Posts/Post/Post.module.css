@@ -1,3 +1,7 @@
+.FeaturedPost {
+    width: 100%;
+}
+
 .Post {
     box-sizing: border-box;
     cursor: pointer;
