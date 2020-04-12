@@ -22,7 +22,7 @@ class FullPost extends Component {
         
         if ( this.props.fetchedPostsById ) {
 //            const clName = this.props.clName
-            let assignedClasses = [classes.Post, classes.Card, myClasses.FullPost]
+            let assignedClasses = [classes.Post, classes.Card, myClasses.FeaturedPost]
 
             post = (
                     <article className={assignedClasses.join(' ')} >

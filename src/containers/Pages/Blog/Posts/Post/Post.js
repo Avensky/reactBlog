@@ -4,17 +4,13 @@ import classes from './Post.module.css';
 import TextTruncate from 'react-text-truncate'; // recommend
 //import { NavLink } from 'react-router-dom'
 
-let btnClass = [
-    classes.Post,
-    classes.Card,
-  ]
-
-  btnClass = btnClass.join(' ')
-
-
 const post = (props) => (
 
-    <article className={btnClass} onClick={props.clicked}>
+    <article className={[
+        classes.Post,
+        classes.Card,
+        props.clName
+      ].join(' ')} onClick={props.clicked}>
         <div className={classes.CardTitle}><h1>{props.title}</h1></div>
         <div className={classes.CardDetails}><h2>By {props.author}</h2> <p>on 2019-12-07</p></div> 
         <div className={classes.CardDescription}>
