@@ -31,7 +31,8 @@ class FullPost extends Component {
                         title={this.props.fetchedPostsById.title} 
                         author={this.props.fetchedPostsById.author}
                         content={this.props.fetchedPostsById.content}
-                        clName={this.props.fetchedPostsById.FeaturedPost}
+                        lines={20}
+                        clName={classes.FullPost}
                     /> 
             )
         }

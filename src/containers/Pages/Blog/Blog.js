@@ -38,6 +38,7 @@ class Blog extends Component {
                         title={featured.title} 
                         author={featured.author}
                         content={featured.content}
+                        lines={6}
                         clName={classes.FeaturedPost}
                         clicked={() => this.postClickedHandler(featured.id)}
                     /> 
@@ -53,6 +54,7 @@ class Blog extends Component {
                             title={post.title} 
                             author={post.author}
                             content={post.content}
+                            lines={4}
                             clicked={() => this.postClickedHandler(post.id)}
                         />
                     </div>

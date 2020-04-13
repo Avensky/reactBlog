@@ -1,5 +1,5 @@
-.FullPost {
-
+.FullPost .FullPost {
+    min-height: 100vh;
 }
 
 .FullPost:hover,
