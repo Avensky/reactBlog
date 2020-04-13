@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import user from '../../../../../assets/images/user.jpg'
 import classes from './Post.module.css';
 import TextTruncate from 'react-text-truncate'; // recommend

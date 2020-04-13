@@ -66,7 +66,14 @@ export const fetchPostsById = (id) => {
         axios.get( '/posts/' + id + '.json')
         .then( result => {
             console.log(result)
-            let fetchedPostsById = result.data
+            const fetchedPostsById = result.data
+//            const fetchedPostsById = []
+//            for ( let key in Post ) {
+//                fetchedPostsById.push( {
+//                    ...result.data[key],
+//                    id: key
+//               } );
+//           }
             dispatch(fetchPostsByIdSuccess(fetchedPostsById));
         })
         .catch( error => {

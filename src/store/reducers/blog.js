@@ -5,7 +5,7 @@ const initialState = {
     posts:[],
     featuredPost: [],
     fetchedPosts: [],
-    fetchedPostsById: null,
+    fetchedPostsById: [],
     loading: false,
 }
 

@@ -5,45 +5,37 @@ import Layout from '../../../Layout/Layout';
 import Header from '../../../Layout/Header/Header';
 import Archives from '../../../Archives/Archives';
 import * as actions from '../../../../store/actions/index'
-import myClasses from './FullPost.module.css';
+import Post from '../Posts/Post/Post';
+//import myClasses from './FullPost.module.css';
 import classes from '../Posts/Post/Post.module.css';
-import user from '../../../../assets/images/user.jpg'
+//import user from '../../../../assets/images/user.jpg'
 class FullPost extends Component {
+    componentDidMount() {
+    }
 
     deletePostHandler(id) {
         this.props.onDeletePost(id)
     }
 
     render () {
-        let post = null;
+        let postsById = <p style={{textAlign: 'center'}}>Something went wrong!</p>
+
         if ( this.props.id ) {
-            post = <p style={{ textAlign: 'center' }}>Loading...!</p>;
+            postsById= <p style={{ textAlign: 'center' }}>Loading...!</p>;
         }
         
-        if ( this.props.fetchedPostsById ) {
-//            const clName = this.props.clName
-            let assignedClasses = [classes.Post, classes.Card, myClasses.FeaturedPost]
-
-            post = (
-                    <article className={assignedClasses.join(' ')} >
-                        <div className={classes.CardTitle}><h1>{this.props.fetchedPostsById.title}</h1></div>
-                        <div className={classes.CardDetails}><h2>By {this.props.fetchedPostsById.author}</h2> <p>on 2019-12-07</p></div> 
-                        <div className={classes.CardDescription}><p>{this.props.fetchedPostsById.content}</p></div>
-                        <figure className={classes.CardThumbnail}>
-                            <img src={user} alt="user"/>
-                        </figure>
-                        <div className={myClasses.Edit}>
-                            <button 
-                                //clicked={this.props.onDeletePost(this.props.id)}
-                            >Update</button>
-                            <button 
-                                //delPost = {this.deletePostHandler(this.props.fetchedPostsById.id)}
-                                className={myClasses.Delete}
-                            >Delete</button>
-                        </div>      
-                    </article>
+        if (!this.props.error) {
+            postsById = ( 
+                    <Post
+                        key={this.props.fetchedPostsById.id} 
+                        title={this.props.fetchedPostsById.title} 
+                        author={this.props.fetchedPostsById.author}
+                        content={this.props.fetchedPostsById.content}
+                        clName={this.props.fetchedPostsById.FeaturedPost}
+                    /> 
             )
         }
+            
 
 //        if (this.props.match.params.id) {
 //            post = <p style={{textAlign: 'center'}}>Loading...!</p>;
@@ -52,7 +44,7 @@ class FullPost extends Component {
             <Layout grid="blog">
                 <Header />
                 <section className={classes.Blog}>
-                    {post}
+                    {postsById}
                 </section>
                 <Archives 
 //                        key={archive.id} 
@@ -68,12 +60,16 @@ class FullPost extends Component {
 
 const mapStateToProps = state => {
     return {
+        posts: state.blog.posts,
+        featuredPost: state.blog.featuredPost,
+        fetchedPosts: state.blog.fetchedPosts,
         fetchedPostsById: state.blog.fetchedPostsById
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
+        onFetchPosts:  () => dispatch( actions.fetchPosts()),
         onFetchPostsById:  (id) => dispatch( actions.fetchPostsById(id)),
         onDeletePost: (id) => dispatch( actions.deletePost(id)),
     }
