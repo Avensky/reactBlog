@@ -11,12 +11,31 @@
     grid-gap: 1em;
     margin-bottom: 2%;
 }
+
 .FeaturedPost {
     width: 100%;
     height:350px;
+    border-color: rgba(36, 138, 197, 1);
 }
+
 .FullPost {
-    min-height:70vh;
+    min-height: 70vh;
+    height: 100%;
+    
+}
+
+.FullPost:hover,
+.FullPost:active {
+}
+
+.Post.FeaturedPost:hover,
+.Post.FeaturedPost:active {
+    border-color: rgba(36, 138, 197, 1);
+}
+
+.FeaturedPost:hover,
+.FeaturedPost:active {
+    border-color: rgba(36, 138, 197, 1);
 }
 
 .Card {
@@ -25,7 +44,7 @@
     grid-template-areas:
 		"title thumbnail"
 		"details thumbnail"
-		"description thumbnail"
+		"description description"
 }
 
 .CardTitle {
@@ -42,7 +61,11 @@
 .CardTitle h1{
  margin: 0;
 }
-
+.CardDetails {
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
 .CardDetails h2 {
     grid-area: details;
     display: inline-block;
@@ -87,19 +110,13 @@ div .CardDescription {
 }
 .CardThumbnail img {
     justify-self: center;
-    border-radius: 50%;
-    border: 2px solid white;
-    width: 75%
+
+    width: 100%
 }
 .CardThumbnail img:after  {
     content: "";
     display: block;
     padding-bottom: 100%;
-}
-
-.Post:hover,
-.Post:active {
-    background-color: #C0DDF5;
 }
 
 .Author {

@@ -1,12 +1,3 @@
-.FullPost .FullPost {
-    min-height: 100vh;
-}
-
-.FullPost:hover,
-.FullPost:active {
-    
-}
-
 .Edit {
     display: flex;
     justify-content: center;
