@@ -1,3 +1,12 @@
+.FullPost.FullPost {
+    min-height: 70vh;
+    height: 100%;
+    grid-template-areas:
+        "title thumbnail"
+        "details thumbnail"
+        "description thumbnail"
+}
+
 .Edit {
     display: flex;
     justify-content: center;

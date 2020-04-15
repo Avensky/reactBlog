@@ -33,7 +33,7 @@ class Blog extends Component {
         if (!this.props.error) {
             featuredPost = this.props.featuredPost.map( featured => {
                 return ( 
-                        <Post
+                    <Post
                         key={featured.id} 
                         title={featured.title} 
                         author={featured.author}

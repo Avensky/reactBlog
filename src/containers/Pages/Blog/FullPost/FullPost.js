@@ -6,7 +6,7 @@ import Header from '../../../Layout/Header/Header';
 import Archives from '../../../Archives/Archives';
 import * as actions from '../../../../store/actions/index'
 import Post from '../Posts/Post/Post';
-//import myClasses from './FullPost.module.css';
+import myClasses from './FullPost.module.css';
 import classes from '../Posts/Post/Post.module.css';
 //import user from '../../../../assets/images/user.jpg'
 class FullPost extends Component {
@@ -32,7 +32,7 @@ class FullPost extends Component {
                         author={this.props.fetchedPostsById.author}
                         content={this.props.fetchedPostsById.content}
                         lines={20}
-                        clName={classes.FullPost}
+                        clName={myClasses.FullPost}
                     /> 
             )
         }

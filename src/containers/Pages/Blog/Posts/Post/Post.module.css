@@ -18,12 +18,6 @@
     border-color: rgba(36, 138, 197, 1);
 }
 
-.FullPost {
-    min-height: 70vh;
-    height: 100%;
-    
-}
-
 .FullPost:hover,
 .FullPost:active {
 }
@@ -54,7 +48,6 @@
     grid-area: title;
     font-size: 1.75rem;
     font-weight: 800;
-
     letter-spacing: 3px;
 }
 
@@ -99,9 +92,6 @@ div .CardDescription {
     flex: 1;
     grid-area: description;
 }
-.FullPost .CardDescription {
-    height: 31.5em;
-}
 
 .CardThumbnail {
     grid-area: thumbnail;
@@ -109,11 +99,12 @@ div .CardDescription {
     position: relative;
 }
 .CardThumbnail img {
-    position: absolute;
+    float: right;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-height: 100%;
 }
 .CardThumbnail img:after  {
     content: "";
