@@ -6,8 +6,8 @@ import Header from '../../../Layout/Header/Header';
 import Archives from '../../../Archives/Archives';
 import * as actions from '../../../../store/actions/index'
 import Post from '../Posts/Post/Post';
-import myClasses from './FullPost.module.css';
-import classes from '../Posts/Post/Post.module.css';
+import classes from './FullPost.module.css';
+import myClasses from '../Posts/Post/Post.module.css';
 //import user from '../../../../assets/images/user.jpg'
 class FullPost extends Component {
     componentDidMount() {
@@ -32,7 +32,7 @@ class FullPost extends Component {
                         author={this.props.fetchedPostsById.author}
                         content={this.props.fetchedPostsById.content}
                         lines={20}
-                        clName={myClasses.FullPost}
+                        clName={classes.FullPost}
                     /> 
             )
         }
@@ -44,7 +44,7 @@ class FullPost extends Component {
         return( 
             <Layout grid="blog">
                 <Header />
-                <section className={classes.Blog}>
+                <section className={myClasses.Blog}>
                     {postsById}
                 </section>
                 <Archives 

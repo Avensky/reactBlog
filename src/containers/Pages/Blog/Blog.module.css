@@ -1,10 +1,12 @@
-.Blog {
-    grid-area: content;
-}
+.Blog { grid-area: content; }
+
 .Blog .FeaturedPost {
-    width: 100%;
-    min-height: 350px;
+    min-height: 15rem;
+    height: 100%;
+    margin: 0 0 1rem;
 }
+
+.Blog .BlogPost { overflow: hidden; }
 
 .Blog .FeaturedPost {
     grid-template-areas:
@@ -14,9 +16,9 @@
 }
 
 .Posts{
-    width: 50%;
     display: inline-flex;
     justify-content: space-between;
+    margin: 0 0 1rem;
 }
 
 .Blog ul {

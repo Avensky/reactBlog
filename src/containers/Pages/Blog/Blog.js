@@ -55,6 +55,7 @@ class Blog extends Component {
                             author={post.author}
                             content={post.content}
                             lines={4}
+                            clName={classes.BlogPost}
                             clicked={() => this.postClickedHandler(post.id)}
                         />
                     </div>

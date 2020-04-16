@@ -1,5 +1,4 @@
-.FullPost.FullPost {
-    min-height: 70vh;
+.FullPost {
     height: 100%;
     grid-template-areas:
         "title thumbnail"
