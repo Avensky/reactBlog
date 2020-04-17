@@ -6,7 +6,10 @@
     margin: 0 0 1rem;
 }
 
-.Blog .BlogPost { overflow: hidden; }
+.Blog .BlogPost { 
+    overflow: hidden;
+    height: 11.2rem;
+}
 
 .Blog .FeaturedPost {
     grid-template-areas:

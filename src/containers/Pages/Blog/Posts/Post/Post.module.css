@@ -13,7 +13,7 @@
 
 .Card {
 	grid-template-columns: 3fr 1fr;
-    grid-template-rows:  35px 35px max-content;
+    grid-template-rows:  35px 35px 1fr;
     grid-template-areas:
 		"title thumbnail"
 		"details thumbnail"
@@ -59,7 +59,7 @@
 }
 
 .CardDescription {
-    height: 8rem;
+
     overflow: hidden;    
     word-wrap: break-word;
     text-overflow: ellipsis;
