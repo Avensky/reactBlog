@@ -1,14 +1,13 @@
 .Blog { grid-area: content; }
 
 .Blog .FeaturedPost {
-    min-height: 15rem;
+    min-height:20rem;
     height: 100%;
     margin: 0 0 1rem;
 }
 
-.Blog .BlogPost { 
-    overflow: hidden;
-    height: 10.8rem;
+.Blog .Posts {
+    height: 9.7em;
 }
 
 .Blog .FeaturedPost {
@@ -18,7 +17,9 @@
     "description thumbnail"
 }
 
+
 .Posts{
+    width: 100%;
     display: inline-flex;
     justify-content: space-between;
     margin: 0 0 1rem;

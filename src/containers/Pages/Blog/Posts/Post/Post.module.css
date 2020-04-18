@@ -11,7 +11,7 @@
     width: 100%;
 }
 
-.Card {
+.Card {   
 	grid-template-columns: 3fr 1fr;
     grid-template-rows: 35px 35px  1fr;
     grid-template-areas:
@@ -73,8 +73,7 @@
     text-align: center;
 }
 .CardThumbnail img {
-    width: 100%;
-    height: auto;
+    height: 100%;
     max-height: 12.5rem;
 }
 .CardThumbnail img:after  {
