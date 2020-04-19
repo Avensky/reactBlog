@@ -16,7 +16,7 @@ class Archives extends Component {
 //        let archives = <p style={{textAlign: 'center'}}>Something went wrong!</p> 
 //		if (!this.props.error) {
 //		}
-		let showAuthors =  this.props.posts.map(post => <li key={post.id}>{post.author}</li>)
+		let showAuthors =  this.props.fetchedPosts.map(post => <li key={post.id}>{post.author}</li>)
 		let showAuthor = [...new Set(showAuthors)];
 
 		let showYears = this.props.posts.map(post => {
@@ -78,7 +78,8 @@ class Archives extends Component {
 
 const mapStateToProps = state => {
     return {
-        posts: state.blog.posts,
+		posts: state.blog.posts,
+		fetchedPosts: state.blog.fetchedPosts,
         featuredPost: state.blog.featuredPost,
     }
 }

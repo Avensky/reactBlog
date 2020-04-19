@@ -38,6 +38,7 @@ class Blog extends Component {
                         title={featured.title} 
                         author={featured.author}
                         content={featured.content}
+                        postDate={featured.date}
                         lines={6}
                         clName={classes.FeaturedPost}
                         clicked={() => this.postClickedHandler(featured.id)}
@@ -54,7 +55,7 @@ class Blog extends Component {
                             title={post.title} 
                             author={post.author}
                             content={post.content}
-                            date={post.date}
+                            postDate={post.date}
                             lines={4}
                             clName={classes.BlogPost}
                             clicked={() => this.postClickedHandler(post.id)}
@@ -76,6 +77,7 @@ class Blog extends Component {
 //                        title={archive.title} 
 //                        author={archive.author}
 //                        content={archive.content}
+                    posts={this.props.fetchedPosts}
 //                        clicked={() => this.postClickedHandler(archive.id)}
                 />
             </Layout>

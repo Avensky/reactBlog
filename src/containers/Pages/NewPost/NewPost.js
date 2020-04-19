@@ -31,6 +31,12 @@ class NewPost extends Component {
                     required: true,
                     isEmail: true
                 }
+            },
+            date: {
+                value: '',
+                validation: {
+                    required: false
+                }
             }
         },
         error: null
@@ -47,13 +53,12 @@ class NewPost extends Component {
         this.props.onNewPost(
             this.state.postForm.title.value, 
             this.state.postForm.content.value, 
-            this.state.postForm.author.value 
+            this.state.postForm.author.value, 
+            this.state.postForm.date.value
         );
     }
-    newPostCancelHandler = () => {
-        this.setState({
 
-        })
+    newPostCancelHandler = () => {
     }
 
     newPostContinueHandler = () => {
@@ -69,9 +74,17 @@ class NewPost extends Component {
                 value: event.target.value,
 //                valid: this.checkValidity( event.target.value, this.state.postForm[controlName].validation ),
                 touched: true
+            },
+            date: {
+                ...this.state.postForm.date,
+                value: new Date()
             }
         };
         this.setState( { postForm: updatedControls } );
+    }
+
+    setDateHandler= () => {
+        
     }
 
     render () {
@@ -101,7 +114,8 @@ class NewPost extends Component {
                     type="text" 
                     onChange={(event) => this.inputChangedHandler( event, "author")}/>
                 <button 
-                    className={classes.btn} 
+                    className={classes.btn}
+                    onClick={this.setDateHandler()}
                     >Add Post
                 </button>
             </form>
@@ -117,6 +131,7 @@ class NewPost extends Component {
         );
     }
 }
+
 const mapStateToProps = state => {
     return {
         error: state.newPost.error,
@@ -128,7 +143,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onNewPost: (title, content, author) => dispatch(actions.newPost(title, content, author)),
+        onNewPost: (title, content, author, date) => dispatch(actions.newPost(title, content, author, date)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

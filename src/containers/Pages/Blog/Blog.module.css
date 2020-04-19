@@ -1,8 +1,7 @@
 .Blog { grid-area: content; }
 
 .Blog .FeaturedPost {
-    min-height:20rem;
-    height: 100%;
+    height: 21rem;
     margin: 0 0 1rem;
 }
 
