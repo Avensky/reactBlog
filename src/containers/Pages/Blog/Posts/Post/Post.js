@@ -16,7 +16,12 @@ const post = (props) => (
         <div className={classes.CardDescription}>{props.content}</div>
         <figure className={classes.CardThumbnail}>
             <img src={user} alt="user"/>
-        </figure> 
+        </figure>
+        <div className={[
+            classes.Edit,
+            props.klName].join(' ')}>
+            <button>Edit</button><button className={classes.Delete}>Delete</button>
+        </div>
     </article>
     )
 

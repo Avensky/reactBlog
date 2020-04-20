@@ -17,7 +17,7 @@
     grid-template-areas:
 		"title thumbnail"
 		"details thumbnail"
-		"description thumbnail"
+        "description thumbnail"
 }
 
 .CardTitle {
@@ -85,4 +85,44 @@
 .Author {
     margin: 16px 0;
     color: #ccc;
+}
+
+
+
+
+.Edit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Edit label {
+    display: block;
+    color: grey;
+}
+
+.Edit button {
+    border: none;
+    background-color: darkcyan;
+    width: 100%;
+    opacity: 0.9;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: white;
+}
+
+.Edit button:hover,
+.Edit button:active {
+    opacity:1;
+}
+
+.Edit button.Delete {
+    background-color: darkred;
+}
+
+.Edit button.Delete:hover,
+.Edit button.Delete:active {
+    opacity:1;
 }

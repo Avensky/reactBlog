@@ -41,6 +41,7 @@ class Blog extends Component {
                         postDate={featured.date}
                         lines={6}
                         clName={classes.FeaturedPost}
+                        klName={classes.EditOff}
                         clicked={() => this.postClickedHandler(featured.id)}
                     /> 
                 )
@@ -58,6 +59,7 @@ class Blog extends Component {
                             postDate={post.date}
                             lines={4}
                             clName={classes.BlogPost}
+                            klName={classes.EditOff}
                             clicked={() => this.postClickedHandler(post.id)}
                         />
                     </div>
