@@ -8,23 +8,26 @@ import * as actions from '../../../../store/actions/index'
 import Post from '../Posts/Post/Post';
 import classes from './FullPost.module.css';
 import myClasses from '../Posts/Post/Post.module.css';
+//import { Redirect } from 'react-router-dom'
 //import user from '../../../../assets/images/user.jpg'
 class FullPost extends Component {
-    componentDidMount() {
+    state = {
+        loadedPost: null
     }
 
     deletePostHandler(id) {
         this.props.onDeletePost(id)
+        this.props.history.replace("/blog")
     }
 
     render () {
         let postsById = <p style={{textAlign: 'center'}}>Something went wrong!</p>
 
-        if ( this.props.id ) {
+        if ( this.props.fetchedPostsById.id ) {
             postsById= <p style={{ textAlign: 'center' }}>Loading...!</p>;
         }
         
-        if (!this.props.error) {
+        if (!this.props.fetchedPostsById.error) {
             postsById = ( 
                 <Post
                     key={this.props.fetchedPostsById.id} 
