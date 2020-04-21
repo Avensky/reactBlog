@@ -26,15 +26,16 @@ class FullPost extends Component {
         
         if (!this.props.error) {
             postsById = ( 
-                    <Post
-                        key={this.props.fetchedPostsById.id} 
-                        title={this.props.fetchedPostsById.title} 
-                        author={this.props.fetchedPostsById.author}
-                        content={this.props.fetchedPostsById.content}
-                        postDate={this.props.fetchedPostsById.date}
-                        lines={20}
-                        clName={classes.FullPost}
-                    /> 
+                <Post
+                    key={this.props.fetchedPostsById.id} 
+                    title={this.props.fetchedPostsById.title} 
+                    author={this.props.fetchedPostsById.author}
+                    content={this.props.fetchedPostsById.content}
+                    postDate={this.props.fetchedPostsById.date}
+                    lines={20}
+                    clName={classes.FullPost}
+                    click={()=> this.deletePostHandler(this.props.fetchedPostsById.id)}
+                /> 
             )
         }
             

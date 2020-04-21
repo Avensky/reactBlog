@@ -20,7 +20,11 @@ const post = (props) => (
         <div className={[
             classes.Edit,
             props.klName].join(' ')}>
-            <button>Edit</button><button className={classes.Delete}>Delete</button>
+            <button>Edit</button>
+            <button 
+                className={classes.Delete}
+                onClick={props.click}
+            >Delete</button>
         </div>
     </article>
     )
